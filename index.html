@@ -3,13 +3,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="google-site-verification" content="nZKda6zxhXJySPHD3uIZPVt29hoI_2EcypPNbQKanUc" />
+
+  <meta name="google-site-verification"
+    content="nZKda6zxhXJySPHD3uIZPVt29hoI_2EcypPNbQKanUc">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta id="metaDescription" name="description"
-    content="SL Crypto Academy - Online crypto trading course and trading books.">
+    content="SL Crypto Academy offers online cryptocurrency trading courses, chart pattern learning materials and technical analysis books for learners in Sri Lanka.">
 
-  <title>SL Crypto Academy | Learn Crypto Trading</title>
+  <meta name="robots" content="index, follow">
+
+  <title>SL Crypto Academy | Crypto Trading Courses in Sri Lanka</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -228,7 +233,7 @@
     });
   </script>
 
-  <!-- Firebase Website Content -->
+  <!-- Firebase: Load Package Prices -->
   <script type="module">
     import { initializeApp }
       from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
@@ -264,33 +269,22 @@
 
         const data = snapshot.data();
 
-        if (data.title) {
-          document.getElementById("siteTitle").textContent =
-            "WELCOME TO " + data.title.toUpperCase();
-
-          document.title = data.title + " | Learn Crypto Trading";
-        }
-
-        if (data.description) {
-          document.getElementById("siteDescription").textContent =
-            data.description;
-
-          document.getElementById("metaDescription")
-            .setAttribute("content", data.description);
-        }
-
-        if (data.price1) {
+        // Load prices saved in the Admin Panel.
+        if (data.price1 != null && String(data.price1).trim() !== "") {
           document.getElementById("price1").textContent =
-            data.price1.replace(/^rs\.?\s*/i, "");
+            String(data.price1).replace(/^rs\.?\s*/i, "");
         }
 
-        if (data.price2) {
+        if (data.price2 != null && String(data.price2).trim() !== "") {
           document.getElementById("price2").textContent =
-            data.price2.replace(/^rs\.?\s*/i, "");
+            String(data.price2).replace(/^rs\.?\s*/i, "");
         }
 
       } catch (error) {
-        console.error("Could not load Firebase website content:", error);
+        console.error(
+          "Could not load Firebase website content:",
+          error
+        );
       }
     }
 
