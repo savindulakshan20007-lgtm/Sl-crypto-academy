@@ -1,26 +1,221 @@
 
-<footer class="footer">
-  <a href="#home" class="footer-logo">
-    <span>SL</span> CRYPTO ACADEMY
-  </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SL Crypto Academy Admin</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #080b09;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    main {
+      max-width: 650px;
+      margin: 25px auto;
+      padding: 24px;
+      background: #111713;
+      border: 1px solid #26372c;
+      border-radius: 14px;
+    }
+    h1 { color: #35e879; }
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 14px;
+      border-radius: 7px;
+      font-size: 16px;
+    }
+    input, textarea {
+      background: #080b09;
+      color: white;
+      border: 1px solid #405247;
+    }
+    button {
+      background: #25d366;
+      color: #061008;
+      border: 0;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #panel { display: none; }
+    #status { overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>SL Crypto Academy</h1>
+    <p>Admin Control Panel</p>
 
-  <p class="footer-description">
-    Your crypto learning journey starts here.
-  </p>
+    <section id="login">
+      <h2>Admin Login</h2>
+      <form id="loginForm">
+        <label>Email</label>
+        <input id="email" type="email" required
+          placeholder="Admin email" autocomplete="username">
 
-  <div class="footer-divider"></div>
+        <label>Password</label>
+        <input id="password" type="password" required
+          placeholder="Admin password" autocomplete="current-password">
 
-  <p class="copyright">
-    © 2026 SL CRYPTO ACADEMY. All rights reserved.
-  </p>
+        <button type="submit">Login</button>
+      </form>
+    </section>
 
-  <div class="developer-credit">
-    <span>Website Designed &amp; Developed by</span>
+    <section id="panel">
+      <h2>Website Content</h2>
+      <form id="contentForm">
+        <label>Website Title</label>
+        <input id="title" placeholder="SL Crypto Academy">
 
-    <strong>Savindu Lakshan</strong>
+        <label>Website Description</label>
+        <textarea id="description" rows="3"></textarea>
 
-    <a href="tel:0754856808" class="developer-contact">
-      075 485 68 08
-    </a>
-  </div>
-</footer>
+        <label>Package 1 Price</label>
+        <input id="price1" placeholder="Rs. 5,000">
+
+        <label>Package 2 Price</label>
+        <input id="price2" placeholder="Rs. 10,000">
+
+        <label>Package 3 Price</label>
+        <input id="price3" placeholder="Rs. 15,000">
+
+        <label>Photo URL</label>
+        <input id="photoUrl" type="url" placeholder="https://...">
+
+        <label>Video URL</label>
+        <input id="videoUrl" type="url" placeholder="https://...">
+
+        <button type="submit">Save Changes</button>
+      </form>
+      <button id="logout" type="button">Logout</button>
+    </section>
+
+    <p id="status">Connecting to Firebase...</p>
+  </main>
+
+  <script type="module">
+    import { initializeApp }
+      from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+    import {
+      getAuth, signInWithEmailAndPassword,
+      onAuthStateChanged, signOut
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+    import {
+      getFirestore, doc, getDoc, setDoc
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA1wvXAjg8UAJH0KZU500BT1mXYpF8sZ3s",
+      authDomain: "sl-crypto-academy.firebaseapp.com",
+      projectId: "sl-crypto-academy",
+      storageBucket: "sl-crypto-academy.firebasestorage.app",
+      messagingSenderId: "923837308526",
+      appId: "1:923837308526:web:7c9b755aa034974edfd07f",
+      measurementId: "G-3WS2C5P3NX"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const contentRef = doc(db, "siteContent", "main");
+
+    const loginSection = document.getElementById("login");
+    const panel = document.getElementById("panel");
+    const status = document.getElementById("status");
+    const fields = [
+      "title", "description", "price1", "price2",
+      "price3", "photoUrl", "videoUrl"
+    ];
+
+    function message(text) {
+      status.textContent = text;
+    }
+
+    function fillForm(data = {}) {
+      fields.forEach(id => {
+        document.getElementById(id).value = data[id] || "";
+      });
+    }
+
+    onAuthStateChanged(auth, async user => {
+      loginSection.style.display = user ? "none" : "block";
+      panel.style.display = user ? "block" : "none";
+
+      if (!user) {
+        message("Please log in with your Admin account.");
+        return;
+      }
+
+      message("Loading content...");
+      try {
+        const snap = await getDoc(contentRef);
+        fillForm(snap.exists() ? snap.data() : {});
+        message("Logged in. You can edit the content.");
+      } catch (error) {
+        message("Load failed: " + error.message);
+      }
+    });
+
+    document.getElementById("loginForm").addEventListener(
+      "submit", async event => {
+        event.preventDefault();
+        message("Logging in...");
+        try {
+          await signInWithEmailAndPassword(
+            auth,
+            document.getElementById("email").value.trim(),
+            document.getElementById("password").value
+          );
+          message("Login successful.");
+        } catch (error) {
+          message("Login failed: " + error.message);
+        }
+      }
+    );
+
+    document.getElementById("contentForm").addEventListener(
+      "submit", async event => {
+        event.preventDefault();
+        if (!auth.currentUser) {
+          message("Please log in first.");
+          return;
+        }
+
+        const data = {};
+        fields.forEach(id => {
+          data[id] = document.getElementById(id).value.trim();
+        });
+
+        message("Saving...");
+        try {
+          await setDoc(contentRef, {
+            ...data,
+            updatedAt: new Date().toISOString()
+          });
+          message("Saved successfully!");
+        } catch (error) {
+          message("Save failed: " + error.message);
+        }
+      }
+    );
+
+    document.getElementById("logout").addEventListener(
+      "click", async () => {
+        try {
+          await signOut(auth);
+          message("Logged out.");
+        } catch (error) {
+          message("Logout failed: " + error.message);
+        }
+      }
+    );
+  </script>
+</body>
+</html>
