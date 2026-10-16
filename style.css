@@ -160,3 +160,21 @@ a.btn:focus-visible,a.nav-cta:focus-visible,a.package-button:focus-visible,butto
 /* Hide any floating WhatsApp shortcut, but preserve WhatsApp links in packages/contact/navigation. */
 .whatsapp-float,.floating-whatsapp,.whatsapp-floating,.whatsapp-fixed,.wa-float,.wa-floating{display:none!important;visibility:hidden!important;pointer-events:none!important;}
 @media(prefers-reduced-motion:reduce){.neon-border::after,.nav-cta,.btn,.admin-card,.admin-panel,.login-card,.admin-form input,.admin-form textarea,.login-form input,.package-button.btn-primary,.package-button.btn-outline{animation:none!important;}}
+
+
+/* Performance pass: lighter scrolling and calmer neon effects */
+.site-header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(7,9,7,.97)!important}
+html{scroll-behavior:auto!important}
+/* Avoid expensive blur/filter work during scroll */
+.hero-visual:before{filter:none!important;opacity:.55}
+.academy-hero-logo{filter:none!important}
+.package-card,.contact-card,.about-logo-card{box-shadow:0 12px 32px rgba(0,0,0,.22)!important}
+.package-card:hover,.contact-card:hover{transform:translateY(-2px)!important}
+/* Neon movement is intentionally slow to reduce repainting */
+.neon-border::after{animation:orbitBorder 8s linear infinite!important;filter:none!important}
+.btn,.nav-cta,.package-button,.menu-toggle{animation:orbitBorder 8s linear infinite!important;box-shadow:none!important}
+.package-button.btn-primary,.package-button.btn-outline{animation:orbitBorder 8s linear infinite!important}
+/* Scroll reveal only uses opacity and a small transform */
+.reveal-pending{opacity:0;transform:translate3d(0,14px,0)}
+.reveal.visible{opacity:1;transform:translate3d(0,0,0);transition:opacity .45s ease-out,transform .45s ease-out}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.reveal-pending,.reveal.visible{opacity:1;transform:none;transition:none}.neon-border::after,.btn,.nav-cta,.package-button,.menu-toggle{animation:none!important}}

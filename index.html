@@ -15,7 +15,7 @@
   <div class="nav-container">
     <a class="brand" href="#home"><img class="brand-logo" src="logo.png" alt="SL Crypto Academy logo" onerror="this.style.display='none'"><span>SL <b>CRYPTO</b> ACADEMY</span></a>
     <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-    <nav class="main-nav" id="mainNav"><a href="#home">Home</a><a href="#packages">Packages</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    <nav class="main-nav" id="mainNav"><a href="#home">Home</a><a href="#about">About</a></nav>
   </div>
 </header>
 <main>
@@ -31,7 +31,7 @@
       <article class="package-card neon-border"><span class="popular-tag">Online Learning</span><div class="package-icon" aria-hidden="true">₿</div><h3 id="package1Title">Online Course</h3><p>Build your crypto trading knowledge with our online course and learning materials.</p><div class="package-price"><span class="currency">Rs.</span><span id="price1">10,000</span><span class="price-caption">Course package</span></div><ul class="feature-list"><li>Online Trading Course</li><li>Chart Pattern Book — FREE</li><li>CMC &amp; Technical Analysis Book — FREE</li><li>Trading Book — FREE</li><li>Daily Free Signals</li></ul><a class="btn btn-primary package-button" href="https://wa.me/94754856808?text=Online%20course%20details" target="_blank" rel="noopener">BUY NOW <span>↗</span></a></article>
       <article class="package-card neon-border"><span class="popular-tag books-tag">Books Package</span><div class="package-icon book-icon" aria-hidden="true">▤</div><h3 id="package2Title">Trading Books</h3><p>Learning resources to help you build your understanding of crypto charts and trading.</p><div class="package-price"><span class="currency">Rs.</span><span id="price2">5,000</span><span class="price-caption">Books package</span></div><ul class="feature-list"><li>Chart Pattern Book</li><li>CMC &amp; Technical Analysis Book</li><li>Trading Book</li></ul><a class="btn btn-primary package-button" href="https://wa.me/94754856808?text=Trading%20books%20details" target="_blank" rel="noopener">BUY NOW <span>↗</span></a></article>
     </div></div></section>
-  <section class="about-section" id="about"><div class="container about-grid"><div class="about-visual"><div class="about-logo-card neon-border"><img src="logo.png" alt="SL Crypto Academy logo" onerror="this.style.display='none'"><div class="about-logo-caption">SL CRYPTO ACADEMY</div></div></div><div class="about-content"><p class="eyebrow">ABOUT OUR ACADEMY</p><h2>Learn step by step.<br><span>Grow your knowledge.</span></h2><p>SL Crypto Academy is focused on helping learners understand crypto trading concepts, chart patterns and technical analysis through learning materials and an online course.</p><p>Contact us to ask about course content, book packages and available learning support.</p><a class="btn btn-primary" href="https://wa.me/94754856808?text=I%20would%20like%20to%20know%20more" target="_blank" rel="noopener">Ask for Details</a></div></div></section>
+  <section class="about-section" id="about"><div class="container about-grid"><div class="about-visual"><div class="about-logo-card neon-border"><img src="logo.png" alt="SL Crypto Academy logo" onerror="this.style.display='none'"><div class="about-logo-caption">SL CRYPTO ACADEMY</div></div></div><div class="about-content"><p class="eyebrow">ABOUT OUR ACADEMY</p><h2>Learn step by step.<br><span>Grow your knowledge.</span></h2><p>SL Crypto Academy is focused on helping learners understand crypto trading concepts, chart patterns and technical analysis through learning materials and an online course.</p><p>Contact us to ask about course content, book packages and available learning support.</p></div></div></section>
   <section class="contact-section" id="contact"><div class="container"><div class="section-heading"><p class="eyebrow">GET IN TOUCH</p><h2>Contact <span>Us</span></h2><p>Message us for course and book package details.</p></div><div class="contact-grid">
     <div class="contact-card neon-border"><div class="contact-icon">✆</div><h3>WhatsApp / Phone</h3><p>Contact SL Crypto Academy for more information.</p><a class="contact-link" href="https://wa.me/94754856808" target="_blank" rel="noopener">075 485 68 08</a></div>
     <div class="contact-card neon-border"><div class="contact-icon yellow-icon">⌂</div><h3>SL Crypto Academy</h3><p>Learn Crypto Trading. Build Your Knowledge.</p><p class="contact-note">For online course and trading books enquiries, contact us using WhatsApp.</p></div>
@@ -53,6 +53,18 @@ document.querySelectorAll('a[href*="wa.me"],a[href*="whatsapp.com"]').forEach(a=
   if(/float|floating|fixed-whatsapp|whatsapp-float/i.test(cls) || style.position==="fixed" && (style.right!=="auto" || style.bottom!=="auto")) a.remove();
 });
 const toggle=document.getElementById("menuToggle"),nav=document.getElementById("mainNav");toggle.addEventListener("click",()=>{const open=nav.classList.toggle("active");toggle.setAttribute("aria-expanded",String(open));toggle.textContent=open?"✕":"☰"});nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("active");toggle.setAttribute("aria-expanded","false");toggle.textContent="☰"}));
-const targets=document.querySelectorAll(".package-card,.section-heading,.about-content,.about-visual,.contact-card");targets.forEach(e=>e.classList.add("reveal"));if("IntersectionObserver" in window){const io=new IntersectionObserver(entries=>entries.forEach(x=>{if(x.isIntersecting){x.target.classList.add("visible");io.unobserve(x.target)}}),{threshold:.12});targets.forEach(e=>io.observe(e))}else targets.forEach(e=>e.classList.add("visible"));
+// Lightweight scroll reveal: animate each section once, then stop observing it.
+const targets=document.querySelectorAll(".hero-content,.hero-visual,.section-heading,.package-card,.about-content,.about-visual,.contact-card,.footer-inner");
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver((entries, observer) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("reveal", "visible");
+        observer.unobserve(entry.target);
+      }
+    }
+  }, { threshold: 0.08, rootMargin: "0px 0px 40px 0px" });
+  targets.forEach(el => { el.classList.add("reveal-pending"); io.observe(el); });
+} else { targets.forEach(el => el.classList.add("visible")); }
 </script>
 </body></html>
