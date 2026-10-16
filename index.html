@@ -40,8 +40,10 @@
   </header>
 
   <main>
+
     <!-- HERO SECTION -->
     <section class="hero" id="home">
+
       <div class="hero-content reveal">
         <p class="eyebrow" id="siteTitle">
           WELCOME TO SL CRYPTO ACADEMY
@@ -62,16 +64,24 @@
         </a>
       </div>
 
+      <!-- HERO BITCOIN DECORATION -->
       <div class="hero-decoration" aria-hidden="true">
+
         <div class="coin coin-one">₿</div>
         <div class="coin coin-two">₿</div>
+
         <div class="chart-line"></div>
-        <div class="chart-label">LEARN • ANALYZE • IMPROVE</div>
+
+        <div class="chart-label">
+          LEARN • ANALYZE • IMPROVE
+        </div>
+
       </div>
     </section>
 
     <!-- PACKAGES SECTION -->
     <section class="packages section" id="packages">
+
       <div class="section-heading reveal">
         <p class="eyebrow">OUR PACKAGES</p>
         <h2>Choose Your <span>Package</span></h2>
@@ -82,6 +92,7 @@
 
         <!-- ONLINE COURSE -->
         <article class="package-card featured reveal">
+
           <div class="package-top">
             <span class="package-tag">ONLINE LEARNING</span>
 
@@ -117,10 +128,12 @@
           >
             BUY NOW <span class="arrow">→</span>
           </a>
+
         </article>
 
         <!-- TRADING BOOKS -->
         <article class="package-card reveal">
+
           <div class="package-top">
             <span class="package-tag book-tag">BOOK COLLECTION</span>
 
@@ -154,6 +167,7 @@
           >
             BUY NOW <span class="arrow">→</span>
           </a>
+
         </article>
 
       </div>
@@ -161,7 +175,9 @@
 
     <!-- CONTACT SECTION -->
     <section class="contact-section section" id="contact">
+
       <div class="contact-box reveal">
+
         <p class="eyebrow">GET IN TOUCH</p>
 
         <h2>Ready to <span>Get Started?</span></h2>
@@ -184,15 +200,21 @@
 
         <p class="contact-number">
           WhatsApp:
-          <a href="https://wa.me/94754856808" target="_blank"
-             rel="noopener noreferrer">075 485 68 08</a>
+          <a
+            href="https://wa.me/94754856808"
+            target="_blank"
+            rel="noopener noreferrer"
+          >075 485 68 08</a>
         </p>
+
       </div>
     </section>
+
   </main>
 
   <!-- FOOTER -->
   <footer class="footer">
+
     <a href="#home" class="footer-logo">
       <span>SL</span> CRYPTO ACADEMY
     </a>
@@ -215,11 +237,24 @@
         075 485 68 08
       </a>
     </div>
+
   </footer>
 
-  <!-- SCROLL REVEAL ANIMATION -->
+  <!-- FLOATING ANIMATED BITCOINS -->
+  <div class="floating-bitcoins" aria-hidden="true">
+    <div class="floating-coin floating-coin-one">
+      <span>₿</span>
+    </div>
+
+    <div class="floating-coin floating-coin-two">
+      <span>₿</span>
+    </div>
+  </div>
+
+  <!-- ANIMATIONS AND SCROLL REVEAL -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+
       const elements = document.querySelectorAll(".reveal");
 
       if (
@@ -250,11 +285,13 @@
       elements.forEach(function (element) {
         observer.observe(element);
       });
+
     });
   </script>
 
   <!-- FIREBASE: LOAD PACKAGE PRICES -->
   <script type="module">
+
     import { initializeApp }
       from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
@@ -276,6 +313,7 @@
 
     async function loadWebsiteContent() {
       try {
+
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
@@ -306,14 +344,17 @@
         }
 
       } catch (error) {
+
         console.error(
           "Could not load Firebase website content:",
           error
         );
+
       }
     }
 
     loadWebsiteContent();
+
   </script>
 
 </body>
