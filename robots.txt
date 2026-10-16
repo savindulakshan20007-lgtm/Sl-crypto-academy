@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://savindulakshan20007-lgtm.github.io/Sl-crypto-academy/sitemap.xml
