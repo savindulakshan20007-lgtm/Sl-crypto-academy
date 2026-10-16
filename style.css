@@ -1,7 +1,8 @@
 
-/* ===============================
-   SL CRYPTO ACADEMY WEBSITE
-================================ */
+/* ==========================================
+   SL CRYPTO ACADEMY
+   Premium Black / Neon Green / Yellow Theme
+========================================== */
 
 :root {
   --black: #080b09;
@@ -11,6 +12,7 @@
   --green: #00e676;
   --yellow: #ffdf32;
   --border: rgba(255, 255, 255, 0.1);
+  --green-glow: rgba(0, 230, 118, 0.18);
 }
 
 * {
@@ -21,11 +23,17 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 85px;
+  scroll-padding-top: 100px;
 }
 
 body {
-  background: var(--black);
+  background:
+    radial-gradient(
+      circle at 5% 15%,
+      rgba(0, 230, 118, 0.045),
+      transparent 28%
+    ),
+    var(--black);
   color: var(--white);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
@@ -37,7 +45,14 @@ a {
   text-decoration: none;
 }
 
-/* NAVIGATION */
+::selection {
+  color: var(--black);
+  background: var(--green);
+}
+
+/* ==========================================
+   NAVIGATION
+========================================== */
 
 .navbar {
   width: 100%;
@@ -47,12 +62,14 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  background: rgba(8, 11, 9, 0.96);
+  background: rgba(8, 11, 9, 0.94);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
 }
 
 .logo,
@@ -65,6 +82,12 @@ a {
 .logo span,
 .footer-logo span {
   color: var(--yellow);
+  transition: color 0.3s ease;
+}
+
+.logo:hover span,
+.footer-logo:hover span {
+  color: var(--green);
 }
 
 .navbar nav {
@@ -76,7 +99,19 @@ a {
 .navbar nav a {
   color: #d5ded7;
   font-size: 14px;
+  position: relative;
   transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--yellow);
+  transition: width 0.3s ease;
 }
 
 .navbar nav a:hover {
@@ -84,7 +119,13 @@ a {
   transform: translateY(-2px);
 }
 
-/* HERO SECTION */
+.navbar nav a:hover::after {
+  width: 100%;
+}
+
+/* ==========================================
+   HERO SECTION
+========================================== */
 
 .hero {
   min-height: 570px;
@@ -95,7 +136,7 @@ a {
   background:
     radial-gradient(
       ellipse at 85% 40%,
-      rgba(0, 230, 118, 0.12),
+      rgba(0, 230, 118, 0.14),
       transparent 40%
     ),
     linear-gradient(135deg, #080b09 20%, #101a12 100%);
@@ -138,6 +179,8 @@ a {
   margin-bottom: 32px;
 }
 
+/* Hero decorative circles */
+
 .hero-decoration {
   position: absolute;
   width: 400px;
@@ -145,8 +188,11 @@ a {
   right: 5%;
   top: 50%;
   transform: translateY(-50%);
-  border: 1px solid rgba(0, 230, 118, 0.1);
+  border: 1px solid rgba(0, 230, 118, 0.13);
   border-radius: 50%;
+  box-shadow:
+    0 0 70px rgba(0, 230, 118, 0.035),
+    inset 0 0 45px rgba(0, 230, 118, 0.025);
 }
 
 .hero-decoration::before,
@@ -154,13 +200,13 @@ a {
   content: "";
   position: absolute;
   inset: 35px;
-  border: 1px solid rgba(0, 230, 118, 0.12);
+  border: 1px solid rgba(0, 230, 118, 0.15);
   border-radius: 50%;
 }
 
 .hero-decoration::after {
   inset: 75px;
-  border-color: rgba(255, 223, 50, 0.15);
+  border-color: rgba(255, 223, 50, 0.18);
 }
 
 .coin {
@@ -171,11 +217,13 @@ a {
   border-radius: 50%;
   font-weight: 900;
   color: var(--yellow);
-  background: #1b291d;
+  background: linear-gradient(145deg, #263a29, #111713);
   border: 1px solid rgba(255, 223, 50, 0.4);
   box-shadow: 0 0 35px rgba(255, 223, 50, 0.1);
   z-index: 2;
-  animation: floatCoin 4s ease-in-out infinite;
+  animation:
+    floatCoin 4s ease-in-out infinite,
+    coinGlow 3s ease-in-out infinite;
 }
 
 .coin-one {
@@ -225,7 +273,19 @@ a {
   }
 }
 
-/* BUTTONS - HOVER, SHINE AND CLICK */
+@keyframes coinGlow {
+  0%, 100% {
+    box-shadow: 0 0 18px rgba(255, 223, 50, 0.08);
+  }
+
+  50% {
+    box-shadow: 0 0 32px rgba(255, 223, 50, 0.22);
+  }
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
 
 .btn {
   min-height: 50px;
@@ -242,6 +302,7 @@ a {
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  isolation: isolate;
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease,
@@ -266,6 +327,7 @@ a {
   transform: skewX(-20deg);
   transition: left 0.6s ease;
   pointer-events: none;
+  z-index: -1;
 }
 
 .btn:hover::before {
@@ -281,14 +343,14 @@ a {
 }
 
 .btn-primary {
-  background: var(--green);
+  background: linear-gradient(110deg, #00e676, #6dffb1);
   color: #061008;
   box-shadow: 0 6px 20px rgba(0, 230, 118, 0.12);
 }
 
 .btn-primary:hover {
-  background: var(--yellow);
-  box-shadow: 0 10px 30px rgba(0, 230, 118, 0.3);
+  background: linear-gradient(110deg, #ffdf32, #fff09a);
+  box-shadow: 0 0 28px rgba(255, 223, 50, 0.22);
 }
 
 .btn-outline {
@@ -312,7 +374,9 @@ a {
   transform: translateX(5px);
 }
 
-/* GENERAL SECTIONS */
+/* ==========================================
+   GENERAL SECTIONS
+========================================== */
 
 .section {
   padding: 95px 8%;
@@ -337,7 +401,9 @@ a {
   font-size: 15px;
 }
 
-/* PACKAGE CARDS */
+/* ==========================================
+   PACKAGE CARDS
+========================================== */
 
 .packages {
   background: #0b100c;
@@ -361,6 +427,7 @@ a {
   border-radius: 16px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
   transition:
     transform 0.4s ease,
     box-shadow 0.4s ease,
@@ -374,7 +441,7 @@ a {
   top: 0;
   left: 0;
   right: 100%;
-  background: var(--green);
+  background: linear-gradient(90deg, var(--green), var(--yellow));
   transition: right 0.4s ease;
 }
 
@@ -385,7 +452,9 @@ a {
 .package-card:hover {
   transform: translateY(-9px);
   border-color: rgba(0, 230, 118, 0.65);
-  box-shadow: 0 18px 45px rgba(0, 230, 118, 0.1);
+  box-shadow:
+    0 20px 45px rgba(0, 230, 118, 0.1),
+    0 0 0 1px rgba(0, 230, 118, 0.05);
 }
 
 .package-card.featured {
@@ -397,6 +466,16 @@ a {
       transparent 45%
     ),
     var(--panel);
+}
+
+.package-card.featured:hover {
+  border-color: var(--yellow);
+}
+
+.package-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .package-tag {
@@ -430,11 +509,14 @@ a {
   color: var(--yellow);
   font-size: 29px;
   font-weight: 900;
-  transition: transform 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .package-card:hover .package-icon {
   transform: rotate(-8deg) scale(1.08);
+  box-shadow: 0 0 22px rgba(255, 223, 50, 0.08);
 }
 
 .book-icon {
@@ -474,6 +556,7 @@ a {
   font-size: clamp(31px, 4vw, 42px);
   font-weight: 900;
   line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .includes-title {
@@ -499,6 +582,11 @@ a {
   color: #cbd5ce;
   font-size: 13px;
   overflow-wrap: anywhere;
+  transition: color 0.25s ease;
+}
+
+.feature-list li:hover {
+  color: var(--white);
 }
 
 .check {
@@ -518,7 +606,9 @@ a {
   margin-top: auto;
 }
 
-/* CONTACT SECTION */
+/* ==========================================
+   CONTACT SECTION
+========================================== */
 
 .contact-section {
   background:
@@ -538,6 +628,15 @@ a {
   border: 1px solid var(--border);
   border-radius: 18px;
   background: rgba(17, 23, 19, 0.8);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.18);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.contact-box:hover {
+  border-color: rgba(0, 230, 118, 0.4);
+  box-shadow: 0 15px 45px rgba(0, 230, 118, 0.06);
 }
 
 .contact-box h2 {
@@ -551,13 +650,13 @@ a {
 }
 
 .btn-whatsapp {
-  background: var(--green);
+  background: linear-gradient(110deg, #00e676, #6dffb1);
   color: #071009;
 }
 
 .btn-whatsapp:hover {
-  background: var(--yellow);
-  box-shadow: 0 10px 30px rgba(0, 230, 118, 0.25);
+  background: linear-gradient(110deg, #ffdf32, #fff09a);
+  box-shadow: 0 0 28px rgba(255, 223, 50, 0.22);
 }
 
 .whatsapp-icon {
@@ -580,13 +679,32 @@ a {
   color: var(--yellow);
 }
 
-/* FOOTER */
+/* ==========================================
+   FOOTER
+========================================== */
 
 .footer {
   padding: 38px 7% 25px;
   text-align: center;
   background: #050705;
   border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "";
+  display: block;
+  width: min(180px, 40%);
+  height: 2px;
+  margin: -38px auto 32px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--green),
+    var(--yellow),
+    transparent
+  );
 }
 
 .footer-logo {
@@ -612,7 +730,7 @@ a {
   margin-bottom: 20px;
 }
 
-/* DEVELOPER NAME AND NUMBER */
+/* Developer credit */
 
 .developer-credit {
   display: flex;
@@ -628,6 +746,14 @@ a {
   color: var(--yellow);
   font-size: 15px;
   font-weight: 800;
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.developer-credit strong:hover {
+  color: var(--green);
+  text-shadow: 0 0 18px rgba(0, 230, 118, 0.25);
 }
 
 .developer-contact {
@@ -652,7 +778,9 @@ a {
   transform: scale(0.95);
 }
 
-/* SCROLL REVEAL ANIMATION */
+/* ==========================================
+   SCROLL REVEAL ANIMATION
+========================================== */
 
 .reveal {
   opacity: 0;
@@ -667,14 +795,25 @@ a {
   transform: translateY(0);
 }
 
-/* KEYBOARD ACCESSIBILITY */
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
 
 a:focus-visible {
   outline: 2px solid var(--yellow);
   outline-offset: 4px;
 }
 
-/* TABLET */
+.btn:focus-visible,
+.navbar nav a:focus-visible,
+.developer-contact:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 4px;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
 
 @media (max-width: 900px) {
   .hero-decoration {
@@ -691,9 +830,15 @@ a:focus-visible {
   }
 }
 
-/* MOBILE */
+/* ==========================================
+   MOBILE
+========================================== */
 
 @media (max-width: 650px) {
+  html {
+    scroll-padding-top: 125px;
+  }
+
   .navbar {
     padding: 15px 5%;
     flex-direction: column;
@@ -769,7 +914,9 @@ a:focus-visible {
   }
 }
 
-/* REDUCED MOTION ACCESSIBILITY */
+/* ==========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================== */
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -786,6 +933,12 @@ a:focus-visible {
 
   .reveal {
     opacity: 1;
+    transform: none;
+  }
+
+  .btn:hover,
+  .package-card:hover,
+  .developer-contact:hover {
     transform: none;
   }
 }
