@@ -126,3 +126,20 @@ a.btn:hover,a.nav-cta:hover,a.whatsapp-float:hover,button:hover,.menu-toggle:hov
 .hero-visual{order:-1;margin:0 auto 14px!important}
 .hero-content>.eyebrow{margin-top:0}
 @media(prefers-reduced-motion:reduce){.btn-primary,.btn-outline,.nav-cta,.menu-toggle,.whatsapp-float,.package-button{animation:orbitBorder 1.2s linear infinite!important}}
+
+/* FINAL OVERRIDE: every button stays black with green text, including hover */
+a.btn,a.nav-cta,a.package-button,a.whatsapp-float,button,.btn,.btn-primary,.btn-outline,.menu-toggle,.admin-actions button,.admin-form button,.login-form button,input[type="button"],input[type="submit"],input[type="reset"],[role="button"]{
+  background:#000!important;
+  background-color:#000!important;
+  background-image:none!important;
+  color:#00e676!important;
+  -webkit-text-fill-color:#00e676!important;
+}
+a.btn:hover,a.nav-cta:hover,a.package-button:hover,a.whatsapp-float:hover,button:hover,.btn:hover,.btn-primary:hover,.btn-outline:hover,.menu-toggle:hover,.admin-actions button:hover,.admin-form button:hover,.login-form button:hover,input[type="button"]:hover,input[type="submit"]:hover,input[type="reset"]:hover,[role="button"]:hover,
+a.btn:focus-visible,a.nav-cta:focus-visible,a.package-button:focus-visible,button:focus-visible,.btn:focus-visible,.btn-primary:focus-visible,.btn-outline:focus-visible{
+  background:#000!important;
+  background-color:#000!important;
+  background-image:none!important;
+  color:#00e676!important;
+  -webkit-text-fill-color:#00e676!important;
+}
