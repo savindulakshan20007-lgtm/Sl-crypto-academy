@@ -151,3 +151,12 @@ a.btn:focus-visible,a.nav-cta:focus-visible,a.package-button:focus-visible,butto
 .package-button.btn-primary,.package-button.btn-outline{animation:orbitBorder 4.2s linear infinite,buyBorderGlow 3.8s ease-in-out infinite alternate!important}
 .whatsapp-float{display:none!important}
 @media(prefers-reduced-motion:reduce){.neon-border::after,.nav-cta,.btn,.admin-card,.admin-panel,.login-card,.admin-form input,.admin-form textarea,.login-form input,.package-button.btn-primary,.package-button.btn-outline{animation:none!important}}
+
+
+/* FINAL FIX: slow down all border-light effects and remove floating WhatsApp shortcut only. */
+.neon-border::after{animation:orbitBorder 8s linear infinite!important;}
+.nav-cta,.btn,.admin-card,.admin-panel,.login-card,.admin-form input,.admin-form textarea,.login-form input{animation:orbitBorder 8s linear infinite!important;}
+.package-button.btn-primary,.package-button.btn-outline{animation:orbitBorder 8s linear infinite,buyBorderGlow 6s ease-in-out infinite alternate!important;}
+/* Hide any floating WhatsApp shortcut, but preserve WhatsApp links in packages/contact/navigation. */
+.whatsapp-float,.floating-whatsapp,.whatsapp-floating,.whatsapp-fixed,.wa-float,.wa-floating{display:none!important;visibility:hidden!important;pointer-events:none!important;}
+@media(prefers-reduced-motion:reduce){.neon-border::after,.nav-cta,.btn,.admin-card,.admin-panel,.login-card,.admin-form input,.admin-form textarea,.login-form input,.package-button.btn-primary,.package-button.btn-outline{animation:none!important;}}

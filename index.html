@@ -46,6 +46,12 @@ try{const app=initializeApp(firebaseConfig);const db=getFirestore(app);const sna
 </script>
 <script>
 document.getElementById("year").textContent=new Date().getFullYear();
+// Remove only floating WhatsApp shortcuts; keep the package and contact WhatsApp links.
+document.querySelectorAll('a[href*="wa.me"],a[href*="whatsapp.com"]').forEach(a=>{
+  const cls=String(a.className||"");
+  const style=getComputedStyle(a);
+  if(/float|floating|fixed-whatsapp|whatsapp-float/i.test(cls) || style.position==="fixed" && (style.right!=="auto" || style.bottom!=="auto")) a.remove();
+});
 const toggle=document.getElementById("menuToggle"),nav=document.getElementById("mainNav");toggle.addEventListener("click",()=>{const open=nav.classList.toggle("active");toggle.setAttribute("aria-expanded",String(open));toggle.textContent=open?"✕":"☰"});nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("active");toggle.setAttribute("aria-expanded","false");toggle.textContent="☰"}));
 const targets=document.querySelectorAll(".package-card,.section-heading,.about-content,.about-visual,.contact-card");targets.forEach(e=>e.classList.add("reveal"));if("IntersectionObserver" in window){const io=new IntersectionObserver(entries=>entries.forEach(x=>{if(x.isIntersecting){x.target.classList.add("visible");io.unobserve(x.target)}}),{threshold:.12});targets.forEach(e=>io.observe(e))}else targets.forEach(e=>e.classList.add("visible"));
 </script>
