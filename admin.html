@@ -1,9 +1,10 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="theme-color" content="#080b09">
   <title>SL Crypto Academy | Admin Panel</title>
 
@@ -16,7 +17,7 @@
       --green: #00e676;
       --yellow: #ffdf32;
       --red: #ff2020;
-      --border: rgba(255,255,255,.12);
+      --border: rgba(255,255,255,.1);
     }
 
     * {
@@ -27,124 +28,152 @@
 
     body {
       min-height: 100vh;
-      padding: 25px 16px;
+      padding: 24px 16px 45px;
       color: var(--white);
       background:
-        radial-gradient(ellipse at 10% 0%, rgba(0,230,118,.10), transparent 45%),
-        radial-gradient(ellipse at 90% 100%, rgba(255,32,32,.08), transparent 40%),
+        radial-gradient(ellipse at top, rgba(0,230,118,.1), transparent 45%),
         var(--black);
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
     }
 
-    main {
-      position: relative;
-      max-width: 700px;
-      margin: 20px auto;
-      padding: 30px;
-      overflow: hidden;
-      isolation: isolate;
-      border: 1px solid rgba(0,230,118,.35);
-      border-radius: 18px;
-      background: rgba(17,23,19,.96);
-      box-shadow: 0 0 30px rgba(0,230,118,.08);
+    button, input, textarea {
+      font: inherit;
     }
 
-    main::before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      top: 0;
-      left: 8%;
-      right: 8%;
-      height: 2px;
-      background: linear-gradient(
-        90deg, transparent, var(--green), var(--yellow),
-        var(--red), transparent
-      );
-      background-size: 200% 100%;
-      animation: lightMove 4s linear infinite;
+    .topbar {
+      max-width: 760px;
+      margin: 0 auto 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 13px;
-      margin-bottom: 8px;
+      gap: 12px;
     }
 
     .brand-icon {
-      width: 54px;
-      height: 54px;
-      display: flex;
-      flex: 0 0 auto;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid var(--red);
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      border: 1px solid var(--red);
       border-radius: 50%;
       color: var(--green);
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 900;
-      box-shadow: 0 0 12px rgba(255,32,32,.5),
-                  inset 0 0 12px rgba(255,32,32,.15);
-      animation: logoGlow 2s ease-in-out infinite alternate;
+      box-shadow: 0 0 14px rgba(255,32,32,.35);
+      animation: logoGlow 2.5s ease-in-out infinite alternate;
     }
 
-    h1 {
-      font-size: clamp(23px, 5vw, 31px);
-      line-height: 1.2;
-      overflow-wrap: anywhere;
+    .brand h1 {
+      color: var(--white);
+      font-size: clamp(17px, 4vw, 23px);
+      line-height: 1.3;
     }
 
-    h1 span {
+    .brand h1 span {
       color: var(--green);
     }
 
-    .subtitle {
+    .brand p {
       color: var(--muted);
-      margin: 12px 0 25px;
-      font-size: 14px;
+      font-size: 11px;
     }
 
-    h2 {
-      font-size: 20px;
+    .live-indicator {
+      color: var(--green);
+      font-size: 10px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(19px, 4vw, 34px);
+      background: rgba(17,23,19,.96);
+      border: 1px solid rgba(0,230,118,.23);
+      border-radius: 18px;
+      box-shadow: 0 15px 60px rgba(0,0,0,.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    main::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--green),
+        var(--yellow),
+        var(--red),
+        transparent
+      );
+      box-shadow: 0 0 15px rgba(0,230,118,.4);
+    }
+
+    .intro {
+      margin-bottom: 25px;
+    }
+
+    .intro h2 {
+      font-size: 23px;
+      margin-bottom: 5px;
+    }
+
+    .intro p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .section-title {
+      color: var(--green);
+      font-size: 15px;
       margin-bottom: 18px;
     }
 
-    section {
-      margin-top: 22px;
-      padding: 22px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: rgba(8,11,9,.5);
+    .field {
+      margin-bottom: 18px;
     }
 
     label {
       display: block;
-      margin-top: 13px;
-      color: #e2eae4;
-      font-size: 13px;
-      font-weight: 700;
+      margin-bottom: 7px;
+      color: #e3ece5;
+      font-size: 12px;
+      font-weight: bold;
     }
 
     input, textarea {
-      width: 100%;
       display: block;
-      margin-top: 7px;
+      width: 100%;
       padding: 13px 14px;
-      border: 1px solid #405247;
+      color: var(--white);
+      background: #080b09;
+      border: 1px solid #35453a;
       border-radius: 8px;
       outline: none;
-      background: #080b09;
-      color: white;
-      font: inherit;
-      font-size: 14px;
-      transition: border-color .2s, box-shadow .2s;
+      transition: border-color .25s, box-shadow .25s;
     }
 
     input:focus, textarea:focus {
       border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(0,230,118,.10);
+      box-shadow: 0 0 0 3px rgba(0,230,118,.08);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #6f7d73;
     }
 
     textarea {
@@ -152,67 +181,76 @@
       resize: vertical;
     }
 
-    .hint {
+    .help {
       display: block;
-      color: var(--muted);
-      font-size: 11px;
-      margin-top: 5px;
+      color: #89958c;
+      font-size: 10px;
+      margin-top: 6px;
     }
 
-    button, .back-link {
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 25px 0;
+    }
+
+    .btn {
       width: 100%;
-      min-height: 46px;
+      min-height: 47px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      margin-top: 16px;
-      padding: 12px 16px;
-      border: 1px solid rgba(0,230,118,.6);
+      padding: 12px 18px;
+      border: 1px solid transparent;
       border-radius: 8px;
-      background: var(--green);
-      color: #061008;
-      font-size: 14px;
-      font-weight: 800;
-      text-align: center;
-      text-decoration: none;
       cursor: pointer;
-      transition: transform .22s ease, box-shadow .22s ease,
-                  background .22s ease;
+      font-size: 13px;
+      font-weight: 800;
+      transition: transform .25s, box-shadow .25s, background .25s;
     }
 
-    button:hover, .back-link:hover {
-      transform: translateY(-3px);
-      background: #39ff9c;
-      box-shadow: 0 0 15px rgba(0,230,118,.35),
-                  0 0 28px rgba(0,230,118,.12);
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
-    button:active {
-      transform: scale(.98);
+    .btn:disabled {
+      opacity: .6;
+      cursor: wait;
+      transform: none;
     }
 
-    .secondary-button {
-      color: white;
-      background: #171e19;
-      border-color: rgba(255,255,255,.2);
+    .btn-primary {
+      color: #031108;
+      background: var(--green);
+      box-shadow: 0 0 15px rgba(0,230,118,.1);
     }
 
-    .secondary-button:hover {
-      color: var(--yellow);
-      background: #202a22;
-      box-shadow: 0 0 15px rgba(255,223,50,.15);
+    .btn-primary:hover {
+      background: #45ffa0;
+      box-shadow: 0 0 24px rgba(0,230,118,.25);
     }
 
-    .danger-button {
-      color: white;
-      background: #27100f;
-      border-color: rgba(255,32,32,.5);
+    .btn-secondary {
+      color: var(--white);
+      background: #19221b;
+      border-color: #35453a;
     }
 
-    .danger-button:hover {
-      background: #401311;
-      box-shadow: 0 0 18px rgba(255,32,32,.2);
+    .btn-secondary:hover {
+      border-color: var(--yellow);
+      box-shadow: 0 0 18px rgba(255,223,50,.1);
+    }
+
+    .btn-danger {
+      margin-top: 12px;
+      color: #fff;
+      background: rgba(255,32,32,.1);
+      border-color: rgba(255,32,32,.45);
+    }
+
+    .btn-danger:hover {
+      background: rgba(255,32,32,.2);
+      box-shadow: 0 0 18px rgba(255,32,32,.15);
     }
 
     #panel {
@@ -221,78 +259,90 @@
 
     #status {
       margin-top: 20px;
-      padding: 13px;
-      color: var(--yellow);
-      background: rgba(255,223,50,.05);
-      border: 1px solid rgba(255,223,50,.15);
+      padding: 12px 14px;
+      border: 1px solid var(--border);
       border-radius: 8px;
-      font-size: 13px;
+      background: rgba(0,0,0,.2);
+      color: var(--muted);
+      font-size: 12px;
       overflow-wrap: anywhere;
     }
 
-    .preview-box {
-      margin-top: 18px;
-      padding: 15px;
-      border: 1px dashed #405247;
-      border-radius: 10px;
-    }
-
-    .preview-box h3 {
-      font-size: 13px;
+    #status.success {
       color: var(--green);
-      margin-bottom: 10px;
+      border-color: rgba(0,230,118,.3);
     }
 
-    #photoPreview {
-      display: none;
-      width: 100%;
-      max-height: 240px;
-      object-fit: contain;
-      border-radius: 8px;
-      background: #080b09;
+    #status.error {
+      color: #ff7373;
+      border-color: rgba(255,32,32,.35);
     }
 
-    #videoPreview {
+    .preview {
       display: none;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: 0;
-      border-radius: 8px;
-      background: #080b09;
+      margin-top: 12px;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+    }
+
+    .preview img {
+      max-width: 100%;
+      max-height: 220px;
+      margin: auto;
+      border-radius: 6px;
+    }
+
+    .preview a {
+      color: var(--green);
+      overflow-wrap: anywhere;
+      font-size: 12px;
+    }
+
+    .note {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 11px;
     }
 
     .footer {
-      margin-top: 25px;
-      color: #859188;
+      max-width: 760px;
+      margin: 20px auto 0;
       text-align: center;
-      font-size: 11px;
+      color: #829087;
+      font-size: 10px;
     }
 
     .footer strong {
       color: var(--green);
     }
 
-    @keyframes lightMove {
-      from { background-position: 100% 0; }
-      to { background-position: -100% 0; }
-    }
-
     @keyframes logoGlow {
       from {
-        box-shadow: 0 0 8px rgba(255,32,32,.35),
-                    inset 0 0 8px rgba(255,32,32,.1);
+        box-shadow: 0 0 8px rgba(255,32,32,.25);
       }
       to {
-        box-shadow: 0 0 20px rgba(255,32,32,.7),
-                    inset 0 0 15px rgba(255,32,32,.2);
+        box-shadow: 0 0 22px rgba(255,32,32,.65);
       }
     }
 
-    @media (max-width: 520px) {
-      body { padding: 10px; }
-      main { margin: 8px auto; padding: 19px; }
-      section { padding: 16px; }
-      .brand-icon { width: 46px; height: 46px; }
+    @media (max-width: 480px) {
+      body {
+        padding: 15px 12px 30px;
+      }
+
+      .brand-icon {
+        width: 42px;
+        height: 42px;
+      }
+
+      .live-indicator {
+        font-size: 9px;
+      }
+
+      .intro h2 {
+        font-size: 20px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -305,93 +355,168 @@
 </head>
 
 <body>
-  <main>
-    <header>
-      <div class="brand">
-        <div class="brand-icon" aria-hidden="true">SL</div>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">SL</div>
+      <div>
         <h1>SL <span>Crypto Academy</span></h1>
+        <p>Website Administration</p>
       </div>
-      <p class="subtitle">Admin Control Panel · Manage your website content</p>
-    </header>
+    </div>
+    <span class="live-indicator">● ADMIN PANEL</span>
+  </header>
+
+  <main>
+    <div class="intro">
+      <h2>Control Panel</h2>
+      <p>Manage your website content and package information.</p>
+    </div>
 
     <section id="login">
-      <h2>🔐 Admin Login</h2>
+      <h3 class="section-title">Admin Login</h3>
 
       <form id="loginForm">
-        <label for="email">Admin Email</label>
-        <input id="email" type="email" required
-          placeholder="Enter admin email"
-          autocomplete="username">
+        <div class="field">
+          <label for="email">Admin Email</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="Enter admin email"
+            autocomplete="username"
+            required
+          >
+        </div>
 
-        <label for="password">Password</label>
-        <input id="password" type="password" required
-          placeholder="Enter password"
-          autocomplete="current-password">
+        <div class="field">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Enter password"
+            autocomplete="current-password"
+            required
+          >
+        </div>
 
-        <button type="submit">Login →</button>
+        <button class="btn btn-primary" id="loginButton" type="submit">
+          Login to Admin Panel
+        </button>
       </form>
     </section>
 
     <section id="panel">
-      <h2>⚙️ Website Settings</h2>
+      <div class="divider"></div>
+      <h3 class="section-title">Website Content</h3>
 
       <form id="contentForm">
-        <label for="title">Website Title</label>
-        <input id="title" placeholder="SL Crypto Academy">
+        <div class="field">
+          <label for="title">Website Title</label>
+          <input id="title" placeholder="SL Crypto Academy">
+        </div>
 
-        <label for="description">Website Description</label>
-        <textarea id="description"
-          placeholder="Enter your website description"
-          rows="3"></textarea>
+        <div class="field">
+          <label for="description">Website Description</label>
+          <textarea
+            id="description"
+            placeholder="Enter your website description"
+          ></textarea>
+        </div>
 
-        <label for="price1">Package 1 Price</label>
-        <input id="price1" placeholder="10000">
-        <small class="hint">Enter a price, e.g. 10000. Check your homepage code to confirm which package uses this field.</small>
+        <div class="divider"></div>
+        <h3 class="section-title">Package Prices</h3>
 
-        <label for="price2">Package 2 Price</label>
-        <input id="price2" placeholder="5000">
+        <div class="field">
+          <label for="price1">Package 1 Price — Online Course</label>
+          <input
+            id="price1"
+            inputmode="decimal"
+            placeholder="10000"
+          >
+          <small class="help">Enter the amount only, for example 10000.</small>
+        </div>
 
-        <label for="price3">Package 3 Price</label>
-        <input id="price3" placeholder="15000">
-        <small class="hint">Package 3 will only appear on the public site if your homepage is coded to display it.</small>
+        <div class="field">
+          <label for="price2">Package 2 Price — Trading Books</label>
+          <input
+            id="price2"
+            inputmode="decimal"
+            placeholder="5000"
+          >
+          <small class="help">Enter the amount only, for example 5000.</small>
+        </div>
 
-        <label for="photoUrl">Photo URL</label>
-        <input id="photoUrl" type="url"
-          placeholder="https://example.com/photo.jpg">
-        <small class="hint">Use a direct, publicly accessible image URL.</small>
+        <div class="field">
+          <label for="price3">Package 3 Price (Optional)</label>
+          <input
+            id="price3"
+            inputmode="decimal"
+            placeholder="Optional"
+          >
+          <small class="help">
+            Your current homepage has two packages. This third price is saved
+            but will not appear until a third package is added to the homepage.
+          </small>
+        </div>
 
-        <label for="videoUrl">Video URL</label>
-        <input id="videoUrl" type="url"
-          placeholder="https://example.com/video">
-        <small class="hint">Saving a video URL does not automatically embed it on the homepage; the homepage needs matching display code.</small>
+        <div class="divider"></div>
+        <h3 class="section-title">Photo and Video</h3>
 
-        <button type="submit">💾 Save Changes</button>
+        <div class="field">
+          <label for="photoUrl">Photo URL</label>
+          <input
+            id="photoUrl"
+            type="url"
+            placeholder="https://example.com/photo.jpg"
+          >
+          <small class="help">
+            Enter a publicly accessible image URL.
+          </small>
+          <div class="preview" id="photoPreview">
+            <img id="photoPreviewImage" alt="Website photo preview">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="videoUrl">Video URL</label>
+          <input
+            id="videoUrl"
+            type="url"
+            placeholder="https://..."
+          >
+          <small class="help">
+            A video URL is saved here. Displaying it on the homepage also
+            requires homepage code.
+          </small>
+          <div class="preview" id="videoPreview">
+            <a id="videoPreviewLink" target="_blank" rel="noopener noreferrer">
+              Open video link
+            </a>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="saveButton" type="submit">
+          Save Changes
+        </button>
       </form>
 
-      <div class="preview-box">
-        <h3>Photo Preview</h3>
-        <img id="photoPreview" alt="Website photo preview">
-        <h3 style="margin-top:16px">Video Preview</h3>
-        <iframe id="videoPreview" title="Video preview"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-        <small class="hint">Preview supports direct image links and common YouTube links.</small>
-      </div>
+      <button class="btn btn-danger" id="logout" type="button">
+        Logout
+      </button>
 
-      <button id="logout" type="button" class="danger-button">Logout</button>
-      <a class="back-link secondary-button"
-        href="./index.html">← Open Website</a>
+      <p class="note">
+        Changes are saved to Firebase Firestore. The public website must read
+        the relevant fields to display them to visitors.
+      </p>
     </section>
 
     <p id="status" role="status" aria-live="polite">
       Connecting to Firebase...
     </p>
-
-    <footer class="footer">
-      Website Designed &amp; Developed by <strong>Savindu Lakshan</strong><br>
-      SL Crypto Academy
-    </footer>
   </main>
+
+  <footer class="footer">
+    Website Designed &amp; Developed by <strong>Savindu Lakshan</strong>
+  </footer>
 
   <script type="module">
     import { initializeApp }
@@ -429,6 +554,8 @@
     const loginSection = document.getElementById("login");
     const panel = document.getElementById("panel");
     const status = document.getElementById("status");
+    const loginButton = document.getElementById("loginButton");
+    const saveButton = document.getElementById("saveButton");
 
     const fields = [
       "title",
@@ -440,8 +567,9 @@
       "videoUrl"
     ];
 
-    function message(text) {
+    function message(text, type = "") {
       status.textContent = text;
+      status.className = type;
     }
 
     function fillForm(data = {}) {
@@ -450,82 +578,54 @@
         document.getElementById(id).value =
           value === undefined || value === null ? "" : String(value);
       });
+
       updatePreviews();
     }
 
-    function safeHttpUrl(value) {
-      try {
-        const url = new URL(value);
-        return url.protocol === "https:" || url.protocol === "http:"
-          ? url.href
-          : "";
-      } catch {
-        return "";
-      }
-    }
+    function getFormData() {
+      const data = {};
 
-    function youtubeEmbedUrl(value) {
-      const safe = safeHttpUrl(value);
-      if (!safe) return "";
+      fields.forEach(id => {
+        data[id] = document.getElementById(id).value.trim();
+      });
 
-      try {
-        const url = new URL(safe);
-        let id = "";
-
-        if (url.hostname === "youtu.be") {
-          id = url.pathname.slice(1);
-        } else if (
-          url.hostname.endsWith("youtube.com") ||
-          url.hostname.endsWith("youtube-nocookie.com")
-        ) {
-          if (url.pathname === "/watch") {
-            id = url.searchParams.get("v") || "";
-          } else if (url.pathname.startsWith("/embed/")) {
-            id = url.pathname.split("/")[2] || "";
-          } else if (url.pathname.startsWith("/shorts/")) {
-            id = url.pathname.split("/")[2] || "";
-          }
-        }
-
-        if (!/^[a-zA-Z0-9_-]{11}$/.test(id)) return "";
-        return "https://www.youtube-nocookie.com/embed/" + id;
-      } catch {
-        return "";
-      }
+      return data;
     }
 
     function updatePreviews() {
-      const photoUrl = safeHttpUrl(
-        document.getElementById("photoUrl").value.trim()
-      );
-      const photo = document.getElementById("photoPreview");
+      const photoUrl = document.getElementById("photoUrl").value.trim();
+      const videoUrl = document.getElementById("videoUrl").value.trim();
+
+      const photoPreview = document.getElementById("photoPreview");
+      const photoImage = document.getElementById("photoPreviewImage");
 
       if (photoUrl) {
-        photo.src = photoUrl;
-        photo.style.display = "block";
-        photo.onerror = () => {
-          photo.style.display = "none";
-        };
+        photoImage.src = photoUrl;
+        photoPreview.style.display = "block";
       } else {
-        photo.removeAttribute("src");
-        photo.style.display = "none";
+        photoImage.removeAttribute("src");
+        photoPreview.style.display = "none";
       }
 
-      const videoUrl = document.getElementById("videoUrl").value.trim();
-      const embedUrl = youtubeEmbedUrl(videoUrl);
-      const video = document.getElementById("videoPreview");
+      const videoPreview = document.getElementById("videoPreview");
+      const videoLink = document.getElementById("videoPreviewLink");
 
-      if (embedUrl) {
-        video.src = embedUrl;
-        video.style.display = "block";
+      if (videoUrl) {
+        videoLink.href = videoUrl;
+        videoPreview.style.display = "block";
       } else {
-        video.removeAttribute("src");
-        video.style.display = "none";
+        videoLink.removeAttribute("href");
+        videoPreview.style.display = "none";
       }
     }
 
-    document.getElementById("photoUrl").addEventListener("input", updatePreviews);
-    document.getElementById("videoUrl").addEventListener("input", updatePreviews);
+    document.getElementById("photoUrl").addEventListener(
+      "input", updatePreviews
+    );
+
+    document.getElementById("videoUrl").addEventListener(
+      "input", updatePreviews
+    );
 
     onAuthStateChanged(auth, async user => {
       loginSection.style.display = user ? "none" : "block";
@@ -539,22 +639,26 @@
       message("Logged in. Loading website content...");
 
       try {
-        const snap = await getDoc(contentRef);
-        fillForm(snap.exists() ? snap.data() : {});
-        message("Logged in. You can edit the content.");
+        const snapshot = await getDoc(contentRef);
+        fillForm(snapshot.exists() ? snapshot.data() : {});
+        message("Logged in successfully. You can edit the content.", "success");
       } catch (error) {
         console.error(error);
-        message("Load failed: " + error.message);
+        message(
+          "Could not load content. Check your Firestore rules and internet connection. " +
+          error.message,
+          "error"
+        );
       }
     });
 
     document.getElementById("loginForm").addEventListener(
       "submit", async event => {
         event.preventDefault();
-        const button = event.currentTarget.querySelector("button");
-        button.disabled = true;
-        button.textContent = "Logging in...";
-        message("Checking login details...");
+
+        loginButton.disabled = true;
+        loginButton.textContent = "Logging in...";
+        message("Checking admin login...");
 
         try {
           await signInWithEmailAndPassword(
@@ -562,13 +666,14 @@
             document.getElementById("email").value.trim(),
             document.getElementById("password").value
           );
-          message("Login successful.");
+
+          message("Login successful.", "success");
         } catch (error) {
           console.error(error);
-          message("Login failed: " + error.message);
+          message("Login failed: " + error.message, "error");
         } finally {
-          button.disabled = false;
-          button.textContent = "Login →";
+          loginButton.disabled = false;
+          loginButton.textContent = "Login to Admin Panel";
         }
       }
     );
@@ -578,29 +683,15 @@
         event.preventDefault();
 
         if (!auth.currentUser) {
-          message("Please log in first.");
+          message("Please log in first.", "error");
           return;
         }
 
-        const data = {};
+        const data = getFormData();
 
-        fields.forEach(id => {
-          data[id] = document.getElementById(id).value.trim();
-        });
-
-        // Store numeric-looking prices as numbers for easier formatting.
-        ["price1", "price2", "price3"].forEach(id => {
-          const raw = data[id].replace(/,/g, "").replace(/^Rs\.?\s*/i, "");
-          if (raw !== "" && /^\d+(\.\d+)?$/.test(raw)) {
-            data[id] = Number(raw);
-          }
-        });
-
-        const button = event.currentTarget.querySelector(
-          'button[type="submit"]'
-        );
-        button.disabled = true;
-        button.textContent = "Saving...";
+        // Keep package prices as strings so values like "10000" are preserved.
+        saveButton.disabled = true;
+        saveButton.textContent = "Saving...";
         message("Saving changes to Firebase...");
 
         try {
@@ -609,13 +700,17 @@
             updatedAt: new Date().toISOString()
           }, { merge: true });
 
-          message("Saved successfully! Check the public website to confirm the changes.");
+          message("Saved successfully! Your changes are stored in Firebase.", "success");
         } catch (error) {
           console.error(error);
-          message("Save failed: " + error.message);
+          message(
+            "Save failed: " + error.message +
+            " Check your Firestore security rules.",
+            "error"
+          );
         } finally {
-          button.disabled = false;
-          button.textContent = "💾 Save Changes";
+          saveButton.disabled = false;
+          saveButton.textContent = "Save Changes";
         }
       }
     );
@@ -624,13 +719,15 @@
       "click", async () => {
         try {
           await signOut(auth);
-          message("Logged out.");
+          fillForm({});
+          message("Logged out successfully.", "success");
         } catch (error) {
           console.error(error);
-          message("Logout failed: " + error.message);
+          message("Logout failed: " + error.message, "error");
         }
       }
     );
   </script>
 </body>
 </html>
+```
