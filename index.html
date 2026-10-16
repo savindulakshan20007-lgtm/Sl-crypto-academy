@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta id="metaDescription" name="description"
+  <meta name="description"
     content="SL Crypto Academy offers online cryptocurrency trading courses, chart pattern learning materials and technical analysis books for learners in Sri Lanka.">
 
   <meta name="robots" content="index, follow">
@@ -18,9 +18,6 @@
   <title>SL Crypto Academy | Crypto Trading Courses in Sri Lanka</title>
 
   <link rel="icon" type="image/png" href="/Sl-crypto-academy/favicon.png">
-  <link rel="shortcut icon" href="/Sl-crypto-academy/favicon.png">
-  <link rel="apple-touch-icon" href="/Sl-crypto-academy/favicon.png">
-
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -41,11 +38,11 @@
 
   <main>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero" id="home">
 
       <div class="hero-content reveal">
-        <p class="eyebrow" id="siteTitle">
+        <p class="eyebrow">
           WELCOME TO SL CRYPTO ACADEMY
         </p>
 
@@ -54,7 +51,7 @@
           <span>Build Your Knowledge.</span>
         </h1>
 
-        <p class="hero-description" id="siteDescription">
+        <p class="hero-description">
           Explore our online course and trading books to improve
           your understanding of cryptocurrency trading.
         </p>
@@ -64,22 +61,17 @@
         </a>
       </div>
 
-      <!-- HERO BITCOIN DECORATION -->
+      <!-- HERO DECORATION -->
       <div class="hero-decoration" aria-hidden="true">
-
         <div class="coin coin-one">₿</div>
         <div class="coin coin-two">₿</div>
-
         <div class="chart-line"></div>
-
-        <div class="chart-label">
-          LEARN • ANALYZE • IMPROVE
-        </div>
-
+        <div class="chart-label">LEARN • ANALYZE • IMPROVE</div>
       </div>
+
     </section>
 
-    <!-- PACKAGES SECTION -->
+    <!-- PACKAGES -->
     <section class="packages section" id="packages">
 
       <div class="section-heading reveal">
@@ -95,7 +87,6 @@
 
           <div class="package-top">
             <span class="package-tag">ONLINE LEARNING</span>
-
             <div class="package-icon">₿</div>
 
             <h3>Online Course</h3>
@@ -124,8 +115,7 @@
             class="btn btn-primary buy-btn"
             href="https://wa.me/94754856808?text=Online%20course%20details"
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             BUY NOW <span class="arrow">→</span>
           </a>
 
@@ -136,7 +126,6 @@
 
           <div class="package-top">
             <span class="package-tag book-tag">BOOK COLLECTION</span>
-
             <div class="package-icon book-icon">▤</div>
 
             <h3>Trading Books</h3>
@@ -163,8 +152,7 @@
             class="btn btn-outline buy-btn"
             href="https://wa.me/94754856808?text=Trading%20books%20details"
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             BUY NOW <span class="arrow">→</span>
           </a>
 
@@ -173,11 +161,10 @@
       </div>
     </section>
 
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT -->
     <section class="contact-section section" id="contact">
 
       <div class="contact-box reveal">
-
         <p class="eyebrow">GET IN TOUCH</p>
 
         <h2>Ready to <span>Get Started?</span></h2>
@@ -191,8 +178,7 @@
           class="btn btn-whatsapp"
           href="https://wa.me/94754856808?text=Hello%20SL%20Crypto%20Academy"
           target="_blank"
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
           <span class="whatsapp-icon" aria-hidden="true">◉</span>
           Contact Us on WhatsApp
           <span class="arrow">→</span>
@@ -200,14 +186,12 @@
 
         <p class="contact-number">
           WhatsApp:
-          <a
-            href="https://wa.me/94754856808"
-            target="_blank"
-            rel="noopener noreferrer"
-          >075 485 68 08</a>
+          <a href="https://wa.me/94754856808"
+             target="_blank"
+             rel="noopener noreferrer">075 485 68 08</a>
         </p>
-
       </div>
+
     </section>
 
   </main>
@@ -240,7 +224,7 @@
 
   </footer>
 
-  <!-- FLOATING ANIMATED BITCOINS -->
+  <!-- FLOATING BITCOINS -->
   <div class="floating-bitcoins" aria-hidden="true">
     <div class="floating-coin floating-coin-one">
       <span>₿</span>
@@ -251,7 +235,7 @@
     </div>
   </div>
 
-  <!-- ANIMATIONS AND SCROLL REVEAL -->
+  <!-- SCROLL REVEAL -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
 
@@ -291,7 +275,6 @@
 
   <!-- FIREBASE: LOAD PACKAGE PRICES -->
   <script type="module">
-
     import { initializeApp }
       from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
@@ -313,7 +296,6 @@
 
     async function loadWebsiteContent() {
       try {
-
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
@@ -327,34 +309,27 @@
 
         const data = snapshot.data();
 
-        if (
-          data.price1 != null &&
-          String(data.price1).trim() !== ""
-        ) {
+        if (data.price1 != null &&
+            String(data.price1).trim() !== "") {
           document.getElementById("price1").textContent =
             String(data.price1).replace(/^rs\.?\s*/i, "");
         }
 
-        if (
-          data.price2 != null &&
-          String(data.price2).trim() !== ""
-        ) {
+        if (data.price2 != null &&
+            String(data.price2).trim() !== "") {
           document.getElementById("price2").textContent =
             String(data.price2).replace(/^rs\.?\s*/i, "");
         }
 
       } catch (error) {
-
         console.error(
           "Could not load Firebase website content:",
           error
         );
-
       }
     }
 
     loadWebsiteContent();
-
   </script>
 
 </body>
