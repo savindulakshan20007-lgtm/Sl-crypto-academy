@@ -3,16 +3,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="google-site-verification"
-    content="nZKda6zxhXJySPHD3uIZPVt29hoI_2EcypPNbQKanUc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>SL Crypto Academy | Crypto Trading Courses in Sri Lanka</title>
-  <meta name="description" content="Learn crypto trading with SL Crypto Academy. Online trading course, trading books and learning resources in Sri Lanka.">
-  <meta name="theme-color" content="#080b09">
+  <meta name="google-site-verification"
+    content="nZKda6zxhXJySPHD3uIZPVt29hoI_2EcypPNbQKanUc">
 
-  <link rel="icon" href="favicon.png">
-  <link rel="stylesheet" href="style.css">
+  <meta name="description"
+    content="SL Crypto Academy - Learn crypto trading, chart patterns and technical analysis. Online course and trading books available.">
+
+  <meta name="theme-color" content="#080b09">
+  <title>SL Crypto Academy | Learn Crypto Trading</title>
+
+  <link rel="icon" href="./logo.png" type="image/png">
+  <link rel="stylesheet" href="./style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,16 +23,15 @@
 </head>
 
 <body>
-  <!-- HEADER -->
   <header class="site-header">
     <div class="container nav-container">
-      <a href="#home" class="brand">
-        <img src="logo.png" alt="SL Crypto Academy logo" class="brand-logo">
+      <a class="brand" href="#home" aria-label="SL Crypto Academy home">
+        <img class="brand-logo" src="./logo.png" alt="SL Crypto Academy logo">
         <span>SL <strong>CRYPTO</strong> ACADEMY</span>
       </a>
 
       <button class="menu-toggle" id="menuToggle"
-        aria-label="Open navigation menu" aria-expanded="false">
+        type="button" aria-label="Open navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
 
@@ -38,349 +40,214 @@
         <a href="#packages">Packages</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
-        <a class="nav-cta" href="#packages">Get Started</a>
+        <a class="nav-cta" href="#packages">Start Learning</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="hero section" id="home">
-      <div class="container hero-grid">
+    <section class="hero" id="home">
+      <div class="hero-grid container">
         <div class="hero-content reveal">
-          <div class="eyebrow">
-            <span class="status-dot"></span>
-            YOUR CRYPTO LEARNING JOURNEY STARTS HERE
-          </div>
+          <span class="eyebrow"><span class="status-dot"></span> YOUR CRYPTO LEARNING JOURNEY</span>
 
-          <h1>
+          <h1 id="heroTitle">
             Learn Crypto Trading.
             <span>Build Your Knowledge.</span>
           </h1>
 
-          <p class="hero-description">
-            Build your understanding of cryptocurrency trading with
-            educational resources, trading books and our online course.
+          <p class="hero-description" id="heroDescription">
+            Improve your crypto trading knowledge with learning resources,
+            chart patterns, technical analysis and trading books.
           </p>
 
           <div class="hero-actions">
-            <a href="#packages" class="btn btn-primary">Explore Packages <span>↗</span></a>
-            <a href="#about" class="btn btn-outline">Learn More</a>
+            <a class="btn btn-primary" href="#packages">Explore Packages <span>↗</span></a>
+            <a class="btn btn-outline" href="#contact">Contact Us</a>
           </div>
 
           <div class="hero-points">
-            <div><span class="check-icon">✓</span> Online Learning</div>
-            <div><span class="check-icon">✓</span> Trading Resources</div>
-            <div><span class="check-icon">✓</span> Learn at Your Pace</div>
+            <span><i>✓</i> Learning resources</span>
+            <span><i>✓</i> Trading books</span>
+            <span><i>✓</i> Technical analysis</span>
           </div>
         </div>
 
-        <!-- LOGO WITH ANIMATED RED RINGS -->
-        <div class="hero-visual logo-hero reveal" aria-label="SL Crypto Academy logo">
-          <div class="logo-orbit orbit-green"></div>
-          <div class="logo-red-ring"></div>
-          <div class="logo-red-ring ring-two"></div>
-          <div class="logo-red-glow"></div>
+        <div class="hero-visual reveal">
+          <div class="logo-orbit orbit-one"></div>
+          <div class="logo-orbit orbit-two"></div>
 
           <div class="academy-logo-wrap">
-            <img
-              src="logo.png"
-              alt="SL Crypto Academy"
-              class="academy-hero-logo"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-
-            <div class="logo-fallback">
-              <span>SL</span>
-              <strong>CRYPTO</strong>
-              <small>ACADEMY</small>
-            </div>
+            <div class="logo-red-glow"></div>
+            <div class="logo-red-ring"></div>
+            <div class="logo-red-ring ring-two"></div>
+            <img class="academy-hero-logo" src="./logo.png"
+              alt="SL Crypto Academy" onerror="this.style.display='none';document.querySelector('.logo-fallback').style.display='grid'">
+            <div class="logo-fallback">SL<br><span>CRYPTO</span></div>
           </div>
 
-          <div class="floating-label label-top">
-            <span class="label-dot red-dot"></span>
-            CRYPTO EDUCATION
-          </div>
-
-          <div class="floating-label label-bottom">
-            <span class="label-dot green-dot"></span>
-            LEARN • BUILD • GROW
-          </div>
+          <div class="floating-label label-top"><span>●</span> LEARN & GROW</div>
+          <div class="floating-label label-bottom"><span>↗</span> CRYPTO EDUCATION</div>
         </div>
       </div>
-      <div class="hero-bottom-glow"></div>
     </section>
 
-    <!-- PACKAGES -->
-    <section class="section packages-section" id="packages">
+    <section class="packages-section section" id="packages">
       <div class="container">
         <div class="section-heading reveal">
-          <div class="eyebrow centered-eyebrow">OUR LEARNING OPTIONS</div>
-          <h2>Choose Your <span>Package</span></h2>
-          <p>Choose the learning option that suits your goals.</p>
+          <span class="eyebrow">CHOOSE YOUR PACKAGE</span>
+          <h2>Start Your <span>Learning Journey</span></h2>
+          <p>Choose the learning package that suits you.</p>
         </div>
 
         <div class="packages-grid">
-          <!-- ONLINE COURSE -->
           <article class="package-card featured-card reveal">
-            <div class="popular-tag">ONLINE COURSE</div>
-
-            <div class="package-icon course-icon">↗</div>
-            <h3>Online Trading Course</h3>
-            <p class="package-description">
-              Learn the fundamentals of crypto trading with our online course
-              and included learning resources.
-            </p>
+            <div class="popular-tag">POPULAR</div>
+            <div class="package-icon course-icon">₿</div>
+            <p class="package-label">COMPLETE LEARNING</p>
+            <h3>Online Course</h3>
+            <p class="package-description">Build your knowledge with our online crypto trading course and learning materials.</p>
 
             <div class="package-price">
-              <span class="currency">Rs.</span>
-              <span id="price1">10,000</span>
+              <span class="currency">Rs.</span><span id="price1">10,000</span>
             </div>
-            <div class="price-caption">One-time course price</div>
-
-            <div class="package-divider"></div>
+            <p class="price-caption">Online course package</p>
 
             <ul class="feature-list">
-              <li><span>✓</span> Online Trading Course</li>
-              <li><span>✓</span> Chart Pattern Book — FREE</li>
-              <li><span>✓</span> CMC & Technical Analysis Book — FREE</li>
-              <li><span>✓</span> Trading Book — FREE</li>
-              <li><span>✓</span> Daily Free Signals</li>
+              <li>Online Trading Course</li>
+              <li>Chart Pattern Book — FREE</li>
+              <li>CMC & Technical Analysis Book — FREE</li>
+              <li>Trading Book — FREE</li>
+              <li>Daily Free Signals</li>
             </ul>
 
-            <a
-              class="btn btn-primary package-button"
-              href="https://wa.me/94754856808?text=Online%20course%20details"
-              target="_blank" rel="noopener noreferrer">
-              BUY NOW <span>↗</span>
-            </a>
+            <a class="btn btn-primary package-button"
+              href="https://wa.me/94754856808?text=Hello%20SL%20Crypto%20Academy%2C%20I%20need%20Online%20course%20details."
+              target="_blank" rel="noopener noreferrer">BUY NOW <span>↗</span></a>
           </article>
 
-          <!-- BOOKS PACKAGE -->
           <article class="package-card reveal">
             <div class="package-icon book-icon">▤</div>
+            <p class="package-label">LEARNING MATERIALS</p>
             <h3>Trading Books</h3>
-            <p class="package-description">
-              Learning resources to help you build your trading knowledge
-              and understand chart analysis.
-            </p>
+            <p class="package-description">Study useful trading concepts with our collection of learning books.</p>
 
             <div class="package-price">
-              <span class="currency">Rs.</span>
-              <span id="price2">5,000</span>
+              <span class="currency">Rs.</span><span id="price2">5,000</span>
             </div>
-            <div class="price-caption">Book package price</div>
-
-            <div class="package-divider"></div>
+            <p class="price-caption">Trading books package</p>
 
             <ul class="feature-list">
-              <li><span>✓</span> Chart Pattern Book</li>
-              <li><span>✓</span> CMC & Technical Analysis Book</li>
-              <li><span>✓</span> Trading Book</li>
-              <li><span>✓</span> Study at Your Own Pace</li>
+              <li>Chart Pattern Book</li>
+              <li>CMC & Technical Analysis</li>
+              <li>Trading Book</li>
+              <li>Learning resources</li>
             </ul>
 
-            <a
-              class="btn btn-outline package-button"
-              href="https://wa.me/94754856808?text=Trading%20books%20details"
-              target="_blank" rel="noopener noreferrer">
-              GET BOOKS <span>↗</span>
-            </a>
+            <a class="btn btn-outline package-button"
+              href="https://wa.me/94754856808?text=Hello%20SL%20Crypto%20Academy%2C%20I%20need%20Trading%20books%20details."
+              target="_blank" rel="noopener noreferrer">BUY NOW <span>↗</span></a>
+          </article>
+
+          <article class="package-card reveal" id="extraPackage" hidden>
+            <div class="package-icon">✦</div>
+            <p class="package-label">MORE LEARNING</p>
+            <h3 id="package3Title">Extra Package</h3>
+            <p class="package-description" id="package3Description">More learning resources.</p>
+            <div class="package-price">
+              <span class="currency">Rs.</span><span id="price3">0</span>
+            </div>
+            <p class="price-caption">Additional package</p>
+            <a class="btn btn-outline package-button" id="package3Button"
+              href="https://wa.me/94754856808?text=Hello%20SL%20Crypto%20Academy"
+              target="_blank" rel="noopener noreferrer">ENQUIRE NOW <span>↗</span></a>
           </article>
         </div>
-
-        <p class="packages-note reveal">
-          For package information and availability, contact us on WhatsApp.
-        </p>
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section class="section about-section" id="about">
       <div class="container about-grid">
         <div class="about-visual reveal">
-          <div class="about-decoration decoration-one"></div>
-          <div class="about-decoration decoration-two"></div>
-
           <div class="about-logo-card">
-            <img src="logo.png" alt="SL Crypto Academy logo"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="about-logo-fallback">SL <span>CRYPTO</span><small>ACADEMY</small></div>
-          </div>
-
-          <div class="about-caption">
-            <span class="caption-line"></span>
-            <span>YOUR LEARNING JOURNEY</span>
+            <img src="./logo.png" alt="SL Crypto Academy logo"
+              onerror="this.style.display='none'">
+            <span>SL CRYPTO ACADEMY</span>
+            <small>LEARN • PRACTICE • GROW</small>
           </div>
         </div>
 
         <div class="about-content reveal">
-          <div class="eyebrow">ABOUT OUR ACADEMY</div>
-          <h2>Knowledge First.<br><span>Learn Step by Step.</span></h2>
-
+          <span class="eyebrow">ABOUT OUR ACADEMY</span>
+          <h2>Knowledge Is Your <span>First Step.</span></h2>
           <p>
-            SL Crypto Academy provides crypto trading educational resources
-            for people who want to develop their understanding of the crypto
-            market and technical analysis.
+            SL Crypto Academy shares educational resources to help learners
+            understand crypto trading concepts, chart patterns and technical analysis.
           </p>
-
           <p>
-            Explore our online course and book packages to find resources
-            that fit your learning journey.
+            Learn at your own pace and continue developing your knowledge
+            through our course and book packages.
           </p>
-
-          <div class="about-points">
-            <div class="about-point">
-              <span class="about-point-icon">01</span>
-              <div>
-                <h4>Learn the Basics</h4>
-                <p>Build your knowledge step by step.</p>
-              </div>
-            </div>
-
-            <div class="about-point">
-              <span class="about-point-icon">02</span>
-              <div>
-                <h4>Explore Resources</h4>
-                <p>Use course materials and trading books.</p>
-              </div>
-            </div>
-
-            <div class="about-point">
-              <span class="about-point-icon">03</span>
-              <div>
-                <h4>Contact Our Team</h4>
-                <p>Ask us about the available packages.</p>
-              </div>
-            </div>
-          </div>
-
-          <a class="btn btn-primary"
-             href="https://wa.me/94754856808?text=Hello%20SL%20Crypto%20Academy"
-             target="_blank" rel="noopener noreferrer">
-            Contact Us <span>↗</span>
-          </a>
+          <a class="btn btn-primary" href="#packages">View Packages <span>↗</span></a>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <section class="section media-section" id="learningMedia" hidden>
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">LEARNING RESOURCES</span>
+          <h2>Explore Our <span>Resources</span></h2>
+        </div>
+        <div id="photoContainer" class="resource-photo" hidden>
+          <img id="resourcePhoto" src="" alt="SL Crypto Academy learning resource">
+        </div>
+        <div id="videoContainer" class="resource-video" hidden>
+          <iframe id="resourceVideo" title="SL Crypto Academy video"
+            loading="lazy" allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+        </div>
+      </div>
+    </section>
+
     <section class="section contact-section" id="contact">
       <div class="container">
         <div class="contact-card reveal">
-          <div class="contact-content">
-            <div class="eyebrow">LET'S CONNECT</div>
-            <h2>Ready to Start <span>Learning?</span></h2>
-            <p>
-              Contact SL Crypto Academy to learn more about our course
-              and book packages.
-            </p>
+          <div>
+            <span class="eyebrow">GET IN TOUCH</span>
+            <h2>Ready to <span>Start Learning?</span></h2>
+            <p>Contact us on WhatsApp for course and book package details.</p>
           </div>
-
-          <div class="contact-actions">
-            <a class="btn btn-primary"
-               href="https://wa.me/94754856808?text=Hello%20SL%20Crypto%20Academy"
-               target="_blank" rel="noopener noreferrer">
-              Chat on WhatsApp <span>↗</span>
-            </a>
-            <a class="contact-phone" href="tel:+94754856808">
-              <span class="phone-symbol">☎</span>
-              075 485 68 08
-            </a>
-          </div>
+          <a class="btn btn-primary"
+            href="https://wa.me/94754856808?text=Hello%20SL%20Crypto%20Academy%2C%20I%20need%20more%20details."
+            target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span>↗</span></a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="container footer-main">
-      <a href="#home" class="brand footer-brand">
-        <img src="logo.png" alt="SL Crypto Academy logo" class="brand-logo">
-        <span>SL <strong>CRYPTO</strong> ACADEMY</span>
-      </a>
-
-      <p>Learn Crypto Trading. Build Your Knowledge.</p>
-
-      <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#packages">Packages</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-
-    <div class="container footer-bottom">
+    <div class="container footer-inner">
+      <a class="footer-brand" href="#home">SL <strong>CRYPTO</strong> ACADEMY</a>
       <p>© <span id="currentYear"></span> SL Crypto Academy. All rights reserved.</p>
-
       <div class="developer-credit">
         <span>Website Designed &amp; Developed by</span>
         <strong>Savindu Lakshan</strong>
-        <a href="tel:+94754856808">075 485 68 08</a>
+        <a href="https://wa.me/94754856808" target="_blank" rel="noopener noreferrer">075 485 68 08</a>
       </div>
     </div>
   </footer>
 
-  <!-- FLOATING WHATSAPP -->
-  <a
+  <a class="whatsapp-float"
     href="https://wa.me/94754856808?text=Hello%20SL%20Crypto%20Academy"
-    class="whatsapp-float"
-    target="_blank" rel="noopener noreferrer"
-    aria-label="Contact SL Crypto Academy on WhatsApp">
+    target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path fill="currentColor" d="M16 3C8.9 3 3.1 8.7 3.1 15.8c0 2.5.7 4.8 2 6.9L3 29l6.5-2.1a13 13 0 0 0 6.5 1.7c7.1 0 12.9-5.7 12.9-12.8S23.1 3 16 3zm0 23.4c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1.2 1.3-3.8-.3-.4a10.5 10.5 0 1 1 9 4.8zm5.8-7.8c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.8-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5.1.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.5z"/>
+      <path fill="currentColor" d="M16 .8A15.1 15.1 0 0 0 3.1 23.8L1 31l7.4-2A15.2 15.2 0 1 0 16 .8Zm0 27.6a12.4 12.4 0 0 1-6.3-1.7l-.5-.3-4.4 1.2L6 23.3l-.3-.5A12.4 12.4 0 1 1 16 28.4Zm6.8-9.3c-.4-.2-2.1-1-2.4-1.1-.3-.1-.6-.2-.8.2-.2.4-.9 1.1-1.1 1.3-.2.2-.4.3-.8.1-.4-.2-1.5-.6-2.8-1.8-1-.9-1.8-2-2-2.4-.2-.4 0-.6.2-.8l.6-.7c.2-.2.2-.4.4-.6.1-.2 0-.5 0-.7-.1-.2-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.7.1-1 .5-.4.4-1.3 1.3-1.3 3s1.3 3.3 1.5 3.5c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.7.9.3 1.7.2 2.3.1.7-.1 2.1-.9 2.4-1.7.3-.8.3-1.5.2-1.7-.1-.2-.3-.3-.7-.5Z"/>
     </svg>
   </a>
 
-  <!-- FIREBASE: READ PACKAGE PRICES -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-
   <script>
-    // Firebase project configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyA1wvXAjg8UAJH0KZU500BT1mXYpF8sZ3s",
-      authDomain: "sl-crypto-academy.firebaseapp.com",
-      projectId: "sl-crypto-academy",
-      storageBucket: "sl-crypto-academy.firebasestorage.app",
-      messagingSenderId: "923837308526",
-      appId: "1:923837308526:web:7c9b755aa034974edfd07f",
-      measurementId: "G-3WS2C5P3NX"
-    };
-
-    // Load prices saved in Firestore, if available.
-    try {
-      if (typeof firebase !== "undefined" &&
-          firebase.apps.length === 0) {
-        firebase.initializeApp(firebaseConfig);
-      }
-
-      if (typeof firebase !== "undefined") {
-        const db = firebase.firestore();
-
-        db.collection("siteContent").doc("main").get()
-          .then((doc) => {
-            if (!doc.exists) return;
-
-            const data = doc.data() || {};
-
-            if (data.price1 !== undefined && data.price1 !== null) {
-              document.getElementById("price1").textContent =
-                Number(data.price1).toLocaleString("en-US");
-            }
-
-            if (data.price2 !== undefined && data.price2 !== null) {
-              document.getElementById("price2").textContent =
-                Number(data.price2).toLocaleString("en-US");
-            }
-          })
-          .catch((error) => {
-            console.log("Using default package prices:", error.message);
-          });
-      }
-    } catch (error) {
-      console.log("Firebase is unavailable; using default prices.");
-    }
-
     // Mobile navigation
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
@@ -391,7 +258,7 @@
       menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
 
-    mainNav.querySelectorAll("a").forEach((link) => {
+    mainNav.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
         mainNav.classList.remove("nav-open");
         menuToggle.classList.remove("active");
@@ -399,27 +266,149 @@
       });
     });
 
-    // Scroll reveal animation
+    // Reveal elements while scrolling
     const revealElements = document.querySelectorAll(".reveal");
 
     if ("IntersectionObserver" in window) {
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
+            revealObserver.unobserve(entry.target);
           }
         });
       }, { threshold: 0.12 });
 
-      revealElements.forEach((element) => revealObserver.observe(element));
+      revealElements.forEach(element => revealObserver.observe(element));
     } else {
-      revealElements.forEach((element) => element.classList.add("visible"));
+      revealElements.forEach(element => element.classList.add("visible"));
     }
 
-    // Footer year
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+    // Firebase website content
+    // Replace the configuration below with the SAME configuration
+    // already used by your working SL Crypto Academy admin.html.
+    const firebaseConfig = {
+      apiKey: "YOUR_FIREBASE_API_KEY",
+      authDomain: "sl-crypto-academy.firebaseapp.com",
+      projectId: "sl-crypto-academy",
+      storageBucket: "sl-crypto-academy.firebasestorage.app",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_FIREBASE_APP_ID"
+    };
+
+    async function loadWebsiteContent() {
+      try {
+        const { initializeApp, getApps } =
+          await import("https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js");
+        const { getFirestore, doc, getDoc } =
+          await import("https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js");
+
+        const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const snapshot = await getDoc(doc(db, "siteContent", "main"));
+
+        if (!snapshot.exists()) return;
+
+        const data = snapshot.data();
+
+        if (data.title) {
+          document.title = data.title + " | Learn Crypto Trading";
+          document.getElementById("heroTitle").textContent = data.title;
+        }
+
+        if (data.description) {
+          document.getElementById("heroDescription").textContent = data.description;
+        }
+
+        if (data.price1 !== undefined && data.price1 !== "") {
+          document.getElementById("price1").textContent = formatPrice(data.price1);
+        }
+
+        if (data.price2 !== undefined && data.price2 !== "") {
+          document.getElementById("price2").textContent = formatPrice(data.price2);
+        }
+
+        if (data.price3 !== undefined && data.price3 !== "") {
+          document.getElementById("price3").textContent = formatPrice(data.price3);
+          document.getElementById("extraPackage").hidden = false;
+        }
+
+        if (data.package3Title) {
+          document.getElementById("package3Title").textContent = data.package3Title;
+        }
+
+        if (data.package3Description) {
+          document.getElementById("package3Description").textContent = data.package3Description;
+        }
+
+        if (data.photoUrl && isHttpUrl(data.photoUrl)) {
+          const photo = document.getElementById("resourcePhoto");
+          photo.src = data.photoUrl;
+          photo.onload = () => {
+            document.getElementById("photoContainer").hidden = false;
+            document.getElementById("learningMedia").hidden = false;
+          };
+          photo.onerror = () => {
+            photo.removeAttribute("src");
+            document.getElementById("photoContainer").hidden = true;
+          };
+        }
+
+        if (data.videoUrl) {
+          const embedUrl = getYouTubeEmbedUrl(data.videoUrl);
+          if (embedUrl) {
+            document.getElementById("resourceVideo").src = embedUrl;
+            document.getElementById("videoContainer").hidden = false;
+            document.getElementById("learningMedia").hidden = false;
+          }
+        }
+      } catch (error) {
+        console.warn("Website content could not be loaded from Firebase.", error);
+        // Default website content remains visible if Firebase is unavailable.
+      }
+    }
+
+    function formatPrice(value) {
+      const digits = String(value).replace(/[^\d.]/g, "");
+      const number = Number(digits);
+      return Number.isFinite(number) && digits !== ""
+        ? number.toLocaleString("en-US")
+        : String(value);
+    }
+
+    function isHttpUrl(value) {
+      try {
+        const url = new URL(value);
+        return url.protocol === "https:" || url.protocol === "http:";
+      } catch {
+        return false;
+      }
+    }
+
+    function getYouTubeEmbedUrl(value) {
+      try {
+        const url = new URL(value);
+        let id = "";
+
+        if (url.hostname.includes("youtu.be")) {
+          id = url.pathname.slice(1);
+        } else if (url.hostname.includes("youtube.com")) {
+          if (url.pathname === "/watch") id = url.searchParams.get("v") || "";
+          else if (url.pathname.startsWith("/embed/")) id = url.pathname.split("/")[2] || "";
+          else if (url.pathname.startsWith("/shorts/")) id = url.pathname.split("/")[2] || "";
+        }
+
+        return /^[a-zA-Z0-9_-]{11}$/.test(id)
+          ? "https://www.youtube-nocookie.com/embed/" + id
+          : "";
+      } catch {
+        return "";
+      }
+    }
+
+    loadWebsiteContent();
   </script>
 </body>
 </html>
