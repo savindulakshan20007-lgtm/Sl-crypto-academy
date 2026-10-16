@@ -3,414 +3,340 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="google-site-verification"
+    content="nZKda6zxhXJySPHD3uIZPVt29hoI_2EcypPNbQKanUc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SL Crypto Academy | Crypto Trading Courses in Sri Lanka</title>
+  <meta name="description" content="Learn crypto trading with SL Crypto Academy. Online trading course, trading books and learning resources in Sri Lanka.">
   <meta name="theme-color" content="#080b09">
-  <title>SL Crypto Academy | Admin Panel</title>
 
-  <style>
-    :root {
-      --black: #080b09;
-      --panel: #111713;
-      --white: #ffffff;
-      --muted: #a5b1a8;
-      --green: #00e676;
-      --yellow: #ffdf32;
-      --red: #ff2020;
-      --border: rgba(255,255,255,.12);
-    }
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      padding: 25px 16px;
-      color: var(--white);
-      background:
-        radial-gradient(ellipse at 10% 0%, rgba(0,230,118,.10), transparent 45%),
-        radial-gradient(ellipse at 90% 100%, rgba(255,32,32,.08), transparent 40%),
-        var(--black);
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
-
-    main {
-      position: relative;
-      max-width: 700px;
-      margin: 20px auto;
-      padding: 30px;
-      overflow: hidden;
-      isolation: isolate;
-      border: 1px solid rgba(0,230,118,.35);
-      border-radius: 18px;
-      background: rgba(17,23,19,.96);
-      box-shadow: 0 0 30px rgba(0,230,118,.08);
-    }
-
-    main::before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      top: 0;
-      left: 8%;
-      right: 8%;
-      height: 2px;
-      background: linear-gradient(
-        90deg, transparent, var(--green), var(--yellow),
-        var(--red), transparent
-      );
-      background-size: 200% 100%;
-      animation: lightMove 4s linear infinite;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      margin-bottom: 8px;
-    }
-
-    .brand-icon {
-      width: 54px;
-      height: 54px;
-      display: flex;
-      flex: 0 0 auto;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid var(--red);
-      border-radius: 50%;
-      color: var(--green);
-      font-size: 20px;
-      font-weight: 900;
-      box-shadow: 0 0 12px rgba(255,32,32,.5),
-                  inset 0 0 12px rgba(255,32,32,.15);
-      animation: logoGlow 2s ease-in-out infinite alternate;
-    }
-
-    h1 {
-      font-size: clamp(23px, 5vw, 31px);
-      line-height: 1.2;
-      overflow-wrap: anywhere;
-    }
-
-    h1 span {
-      color: var(--green);
-    }
-
-    .subtitle {
-      color: var(--muted);
-      margin: 12px 0 25px;
-      font-size: 14px;
-    }
-
-    h2 {
-      font-size: 20px;
-      margin-bottom: 18px;
-    }
-
-    section {
-      margin-top: 22px;
-      padding: 22px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: rgba(8,11,9,.5);
-    }
-
-    label {
-      display: block;
-      margin-top: 13px;
-      color: #e2eae4;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    input, textarea {
-      width: 100%;
-      display: block;
-      margin-top: 7px;
-      padding: 13px 14px;
-      border: 1px solid #405247;
-      border-radius: 8px;
-      outline: none;
-      background: #080b09;
-      color: white;
-      font: inherit;
-      font-size: 14px;
-      transition: border-color .2s, box-shadow .2s;
-    }
-
-    input:focus, textarea:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(0,230,118,.10);
-    }
-
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .hint {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      margin-top: 5px;
-    }
-
-    button, .back-link {
-      width: 100%;
-      min-height: 46px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 16px;
-      padding: 12px 16px;
-      border: 1px solid rgba(0,230,118,.6);
-      border-radius: 8px;
-      background: var(--green);
-      color: #061008;
-      font-size: 14px;
-      font-weight: 800;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform .22s ease, box-shadow .22s ease,
-                  background .22s ease;
-    }
-
-    button:hover, .back-link:hover {
-      transform: translateY(-3px);
-      background: #39ff9c;
-      box-shadow: 0 0 15px rgba(0,230,118,.35),
-                  0 0 28px rgba(0,230,118,.12);
-    }
-
-    button:active {
-      transform: scale(.98);
-    }
-
-    .secondary-button {
-      color: white;
-      background: #171e19;
-      border-color: rgba(255,255,255,.2);
-    }
-
-    .secondary-button:hover {
-      color: var(--yellow);
-      background: #202a22;
-      box-shadow: 0 0 15px rgba(255,223,50,.15);
-    }
-
-    .danger-button {
-      color: white;
-      background: #27100f;
-      border-color: rgba(255,32,32,.5);
-    }
-
-    .danger-button:hover {
-      background: #401311;
-      box-shadow: 0 0 18px rgba(255,32,32,.2);
-    }
-
-    #panel {
-      display: none;
-    }
-
-    #status {
-      margin-top: 20px;
-      padding: 13px;
-      color: var(--yellow);
-      background: rgba(255,223,50,.05);
-      border: 1px solid rgba(255,223,50,.15);
-      border-radius: 8px;
-      font-size: 13px;
-      overflow-wrap: anywhere;
-    }
-
-    .preview-box {
-      margin-top: 18px;
-      padding: 15px;
-      border: 1px dashed #405247;
-      border-radius: 10px;
-    }
-
-    .preview-box h3 {
-      font-size: 13px;
-      color: var(--green);
-      margin-bottom: 10px;
-    }
-
-    #photoPreview {
-      display: none;
-      width: 100%;
-      max-height: 240px;
-      object-fit: contain;
-      border-radius: 8px;
-      background: #080b09;
-    }
-
-    #videoPreview {
-      display: none;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: 0;
-      border-radius: 8px;
-      background: #080b09;
-    }
-
-    .footer {
-      margin-top: 25px;
-      color: #859188;
-      text-align: center;
-      font-size: 11px;
-    }
-
-    .footer strong {
-      color: var(--green);
-    }
-
-    @keyframes lightMove {
-      from { background-position: 100% 0; }
-      to { background-position: -100% 0; }
-    }
-
-    @keyframes logoGlow {
-      from {
-        box-shadow: 0 0 8px rgba(255,32,32,.35),
-                    inset 0 0 8px rgba(255,32,32,.1);
-      }
-      to {
-        box-shadow: 0 0 20px rgba(255,32,32,.7),
-                    inset 0 0 15px rgba(255,32,32,.2);
-      }
-    }
-
-    @media (max-width: 520px) {
-      body { padding: 10px; }
-      main { margin: 8px auto; padding: 19px; }
-      section { padding: 16px; }
-      .brand-icon { width: 46px; height: 46px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#home" class="brand">
+        <img src="logo.png" alt="SL Crypto Academy logo" class="brand-logo">
+        <span>SL <strong>CRYPTO</strong> ACADEMY</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Open navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#home">Home</a>
+        <a href="#packages">Packages</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#packages">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
   <main>
-    <header>
-      <div class="brand">
-        <div class="brand-icon" aria-hidden="true">SL</div>
-        <h1>SL <span>Crypto Academy</span></h1>
+    <!-- HERO -->
+    <section class="hero section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="eyebrow">
+            <span class="status-dot"></span>
+            YOUR CRYPTO LEARNING JOURNEY STARTS HERE
+          </div>
+
+          <h1>
+            Learn Crypto Trading.
+            <span>Build Your Knowledge.</span>
+          </h1>
+
+          <p class="hero-description">
+            Build your understanding of cryptocurrency trading with
+            educational resources, trading books and our online course.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#packages" class="btn btn-primary">Explore Packages <span>↗</span></a>
+            <a href="#about" class="btn btn-outline">Learn More</a>
+          </div>
+
+          <div class="hero-points">
+            <div><span class="check-icon">✓</span> Online Learning</div>
+            <div><span class="check-icon">✓</span> Trading Resources</div>
+            <div><span class="check-icon">✓</span> Learn at Your Pace</div>
+          </div>
+        </div>
+
+        <!-- LOGO WITH ANIMATED RED RINGS -->
+        <div class="hero-visual logo-hero reveal" aria-label="SL Crypto Academy logo">
+          <div class="logo-orbit orbit-green"></div>
+          <div class="logo-red-ring"></div>
+          <div class="logo-red-ring ring-two"></div>
+          <div class="logo-red-glow"></div>
+
+          <div class="academy-logo-wrap">
+            <img
+              src="logo.png"
+              alt="SL Crypto Academy"
+              class="academy-hero-logo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+            <div class="logo-fallback">
+              <span>SL</span>
+              <strong>CRYPTO</strong>
+              <small>ACADEMY</small>
+            </div>
+          </div>
+
+          <div class="floating-label label-top">
+            <span class="label-dot red-dot"></span>
+            CRYPTO EDUCATION
+          </div>
+
+          <div class="floating-label label-bottom">
+            <span class="label-dot green-dot"></span>
+            LEARN • BUILD • GROW
+          </div>
+        </div>
       </div>
-      <p class="subtitle">Admin Control Panel · Manage your website content</p>
-    </header>
-
-    <section id="login">
-      <h2>🔐 Admin Login</h2>
-
-      <form id="loginForm">
-        <label for="email">Admin Email</label>
-        <input id="email" type="email" required
-          placeholder="Enter admin email"
-          autocomplete="username">
-
-        <label for="password">Password</label>
-        <input id="password" type="password" required
-          placeholder="Enter password"
-          autocomplete="current-password">
-
-        <button type="submit">Login →</button>
-      </form>
+      <div class="hero-bottom-glow"></div>
     </section>
 
-    <section id="panel">
-      <h2>⚙️ Website Settings</h2>
+    <!-- PACKAGES -->
+    <section class="section packages-section" id="packages">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow centered-eyebrow">OUR LEARNING OPTIONS</div>
+          <h2>Choose Your <span>Package</span></h2>
+          <p>Choose the learning option that suits your goals.</p>
+        </div>
 
-      <form id="contentForm">
-        <label for="title">Website Title</label>
-        <input id="title" placeholder="SL Crypto Academy">
+        <div class="packages-grid">
+          <!-- ONLINE COURSE -->
+          <article class="package-card featured-card reveal">
+            <div class="popular-tag">ONLINE COURSE</div>
 
-        <label for="description">Website Description</label>
-        <textarea id="description"
-          placeholder="Enter your website description"
-          rows="3"></textarea>
+            <div class="package-icon course-icon">↗</div>
+            <h3>Online Trading Course</h3>
+            <p class="package-description">
+              Learn the fundamentals of crypto trading with our online course
+              and included learning resources.
+            </p>
 
-        <label for="price1">Package 1 Price</label>
-        <input id="price1" placeholder="10000">
-        <small class="hint">Enter a price, e.g. 10000. Check your homepage code to confirm which package uses this field.</small>
+            <div class="package-price">
+              <span class="currency">Rs.</span>
+              <span id="price1">10,000</span>
+            </div>
+            <div class="price-caption">One-time course price</div>
 
-        <label for="price2">Package 2 Price</label>
-        <input id="price2" placeholder="5000">
+            <div class="package-divider"></div>
 
-        <label for="price3">Package 3 Price</label>
-        <input id="price3" placeholder="15000">
-        <small class="hint">Package 3 will only appear on the public site if your homepage is coded to display it.</small>
+            <ul class="feature-list">
+              <li><span>✓</span> Online Trading Course</li>
+              <li><span>✓</span> Chart Pattern Book — FREE</li>
+              <li><span>✓</span> CMC & Technical Analysis Book — FREE</li>
+              <li><span>✓</span> Trading Book — FREE</li>
+              <li><span>✓</span> Daily Free Signals</li>
+            </ul>
 
-        <label for="photoUrl">Photo URL</label>
-        <input id="photoUrl" type="url"
-          placeholder="https://example.com/photo.jpg">
-        <small class="hint">Use a direct, publicly accessible image URL.</small>
+            <a
+              class="btn btn-primary package-button"
+              href="https://wa.me/94754856808?text=Online%20course%20details"
+              target="_blank" rel="noopener noreferrer">
+              BUY NOW <span>↗</span>
+            </a>
+          </article>
 
-        <label for="videoUrl">Video URL</label>
-        <input id="videoUrl" type="url"
-          placeholder="https://example.com/video">
-        <small class="hint">Saving a video URL does not automatically embed it on the homepage; the homepage needs matching display code.</small>
+          <!-- BOOKS PACKAGE -->
+          <article class="package-card reveal">
+            <div class="package-icon book-icon">▤</div>
+            <h3>Trading Books</h3>
+            <p class="package-description">
+              Learning resources to help you build your trading knowledge
+              and understand chart analysis.
+            </p>
 
-        <button type="submit">💾 Save Changes</button>
-      </form>
+            <div class="package-price">
+              <span class="currency">Rs.</span>
+              <span id="price2">5,000</span>
+            </div>
+            <div class="price-caption">Book package price</div>
 
-      <div class="preview-box">
-        <h3>Photo Preview</h3>
-        <img id="photoPreview" alt="Website photo preview">
-        <h3 style="margin-top:16px">Video Preview</h3>
-        <iframe id="videoPreview" title="Video preview"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-        <small class="hint">Preview supports direct image links and common YouTube links.</small>
+            <div class="package-divider"></div>
+
+            <ul class="feature-list">
+              <li><span>✓</span> Chart Pattern Book</li>
+              <li><span>✓</span> CMC & Technical Analysis Book</li>
+              <li><span>✓</span> Trading Book</li>
+              <li><span>✓</span> Study at Your Own Pace</li>
+            </ul>
+
+            <a
+              class="btn btn-outline package-button"
+              href="https://wa.me/94754856808?text=Trading%20books%20details"
+              target="_blank" rel="noopener noreferrer">
+              GET BOOKS <span>↗</span>
+            </a>
+          </article>
+        </div>
+
+        <p class="packages-note reveal">
+          For package information and availability, contact us on WhatsApp.
+        </p>
       </div>
-
-      <button id="logout" type="button" class="danger-button">Logout</button>
-      <a class="back-link secondary-button"
-        href="./index.html">← Open Website</a>
     </section>
 
-    <p id="status" role="status" aria-live="polite">
-      Connecting to Firebase...
-    </p>
+    <!-- ABOUT -->
+    <section class="section about-section" id="about">
+      <div class="container about-grid">
+        <div class="about-visual reveal">
+          <div class="about-decoration decoration-one"></div>
+          <div class="about-decoration decoration-two"></div>
 
-    <footer class="footer">
-      Website Designed &amp; Developed by <strong>Savindu Lakshan</strong><br>
-      SL Crypto Academy
-    </footer>
+          <div class="about-logo-card">
+            <img src="logo.png" alt="SL Crypto Academy logo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="about-logo-fallback">SL <span>CRYPTO</span><small>ACADEMY</small></div>
+          </div>
+
+          <div class="about-caption">
+            <span class="caption-line"></span>
+            <span>YOUR LEARNING JOURNEY</span>
+          </div>
+        </div>
+
+        <div class="about-content reveal">
+          <div class="eyebrow">ABOUT OUR ACADEMY</div>
+          <h2>Knowledge First.<br><span>Learn Step by Step.</span></h2>
+
+          <p>
+            SL Crypto Academy provides crypto trading educational resources
+            for people who want to develop their understanding of the crypto
+            market and technical analysis.
+          </p>
+
+          <p>
+            Explore our online course and book packages to find resources
+            that fit your learning journey.
+          </p>
+
+          <div class="about-points">
+            <div class="about-point">
+              <span class="about-point-icon">01</span>
+              <div>
+                <h4>Learn the Basics</h4>
+                <p>Build your knowledge step by step.</p>
+              </div>
+            </div>
+
+            <div class="about-point">
+              <span class="about-point-icon">02</span>
+              <div>
+                <h4>Explore Resources</h4>
+                <p>Use course materials and trading books.</p>
+              </div>
+            </div>
+
+            <div class="about-point">
+              <span class="about-point-icon">03</span>
+              <div>
+                <h4>Contact Our Team</h4>
+                <p>Ask us about the available packages.</p>
+              </div>
+            </div>
+          </div>
+
+          <a class="btn btn-primary"
+             href="https://wa.me/94754856808?text=Hello%20SL%20Crypto%20Academy"
+             target="_blank" rel="noopener noreferrer">
+            Contact Us <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <div class="contact-content">
+            <div class="eyebrow">LET'S CONNECT</div>
+            <h2>Ready to Start <span>Learning?</span></h2>
+            <p>
+              Contact SL Crypto Academy to learn more about our course
+              and book packages.
+            </p>
+          </div>
+
+          <div class="contact-actions">
+            <a class="btn btn-primary"
+               href="https://wa.me/94754856808?text=Hello%20SL%20Crypto%20Academy"
+               target="_blank" rel="noopener noreferrer">
+              Chat on WhatsApp <span>↗</span>
+            </a>
+            <a class="contact-phone" href="tel:+94754856808">
+              <span class="phone-symbol">☎</span>
+              075 485 68 08
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <script type="module">
-    import { initializeApp }
-      from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <a href="#home" class="brand footer-brand">
+        <img src="logo.png" alt="SL Crypto Academy logo" class="brand-logo">
+        <span>SL <strong>CRYPTO</strong> ACADEMY</span>
+      </a>
 
-    import {
-      getAuth,
-      signInWithEmailAndPassword,
-      onAuthStateChanged,
-      signOut
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+      <p>Learn Crypto Trading. Build Your Knowledge.</p>
 
-    import {
-      getFirestore,
-      doc,
-      getDoc,
-      setDoc
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#packages">Packages</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
 
+    <div class="container footer-bottom">
+      <p>© <span id="currentYear"></span> SL Crypto Academy. All rights reserved.</p>
+
+      <div class="developer-credit">
+        <span>Website Designed &amp; Developed by</span>
+        <strong>Savindu Lakshan</strong>
+        <a href="tel:+94754856808">075 485 68 08</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <a
+    href="https://wa.me/94754856808?text=Hello%20SL%20Crypto%20Academy"
+    class="whatsapp-float"
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Contact SL Crypto Academy on WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="currentColor" d="M16 3C8.9 3 3.1 8.7 3.1 15.8c0 2.5.7 4.8 2 6.9L3 29l6.5-2.1a13 13 0 0 0 6.5 1.7c7.1 0 12.9-5.7 12.9-12.8S23.1 3 16 3zm0 23.4c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1.2 1.3-3.8-.3-.4a10.5 10.5 0 1 1 9 4.8zm5.8-7.8c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.8-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5.1.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.5z"/>
+    </svg>
+  </a>
+
+  <!-- FIREBASE: READ PACKAGE PRICES -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script>
+    // Firebase project configuration
     const firebaseConfig = {
       apiKey: "AIzaSyA1wvXAjg8UAJH0KZU500BT1mXYpF8sZ3s",
       authDomain: "sl-crypto-academy.firebaseapp.com",
@@ -421,216 +347,79 @@
       measurementId: "G-3WS2C5P3NX"
     };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-    const contentRef = doc(db, "siteContent", "main");
+    // Load prices saved in Firestore, if available.
+    try {
+      if (typeof firebase !== "undefined" &&
+          firebase.apps.length === 0) {
+        firebase.initializeApp(firebaseConfig);
+      }
 
-    const loginSection = document.getElementById("login");
-    const panel = document.getElementById("panel");
-    const status = document.getElementById("status");
+      if (typeof firebase !== "undefined") {
+        const db = firebase.firestore();
 
-    const fields = [
-      "title",
-      "description",
-      "price1",
-      "price2",
-      "price3",
-      "photoUrl",
-      "videoUrl"
-    ];
+        db.collection("siteContent").doc("main").get()
+          .then((doc) => {
+            if (!doc.exists) return;
 
-    function message(text) {
-      status.textContent = text;
+            const data = doc.data() || {};
+
+            if (data.price1 !== undefined && data.price1 !== null) {
+              document.getElementById("price1").textContent =
+                Number(data.price1).toLocaleString("en-US");
+            }
+
+            if (data.price2 !== undefined && data.price2 !== null) {
+              document.getElementById("price2").textContent =
+                Number(data.price2).toLocaleString("en-US");
+            }
+          })
+          .catch((error) => {
+            console.log("Using default package prices:", error.message);
+          });
+      }
+    } catch (error) {
+      console.log("Firebase is unavailable; using default prices.");
     }
 
-    function fillForm(data = {}) {
-      fields.forEach(id => {
-        const value = data[id];
-        document.getElementById(id).value =
-          value === undefined || value === null ? "" : String(value);
-      });
-      updatePreviews();
-    }
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
 
-    function safeHttpUrl(value) {
-      try {
-        const url = new URL(value);
-        return url.protocol === "https:" || url.protocol === "http:"
-          ? url.href
-          : "";
-      } catch {
-        return "";
-      }
-    }
-
-    function youtubeEmbedUrl(value) {
-      const safe = safeHttpUrl(value);
-      if (!safe) return "";
-
-      try {
-        const url = new URL(safe);
-        let id = "";
-
-        if (url.hostname === "youtu.be") {
-          id = url.pathname.slice(1);
-        } else if (
-          url.hostname.endsWith("youtube.com") ||
-          url.hostname.endsWith("youtube-nocookie.com")
-        ) {
-          if (url.pathname === "/watch") {
-            id = url.searchParams.get("v") || "";
-          } else if (url.pathname.startsWith("/embed/")) {
-            id = url.pathname.split("/")[2] || "";
-          } else if (url.pathname.startsWith("/shorts/")) {
-            id = url.pathname.split("/")[2] || "";
-          }
-        }
-
-        if (!/^[a-zA-Z0-9_-]{11}$/.test(id)) return "";
-        return "https://www.youtube-nocookie.com/embed/" + id;
-      } catch {
-        return "";
-      }
-    }
-
-    function updatePreviews() {
-      const photoUrl = safeHttpUrl(
-        document.getElementById("photoUrl").value.trim()
-      );
-      const photo = document.getElementById("photoPreview");
-
-      if (photoUrl) {
-        photo.src = photoUrl;
-        photo.style.display = "block";
-        photo.onerror = () => {
-          photo.style.display = "none";
-        };
-      } else {
-        photo.removeAttribute("src");
-        photo.style.display = "none";
-      }
-
-      const videoUrl = document.getElementById("videoUrl").value.trim();
-      const embedUrl = youtubeEmbedUrl(videoUrl);
-      const video = document.getElementById("videoPreview");
-
-      if (embedUrl) {
-        video.src = embedUrl;
-        video.style.display = "block";
-      } else {
-        video.removeAttribute("src");
-        video.style.display = "none";
-      }
-    }
-
-    document.getElementById("photoUrl").addEventListener("input", updatePreviews);
-    document.getElementById("videoUrl").addEventListener("input", updatePreviews);
-
-    onAuthStateChanged(auth, async user => {
-      loginSection.style.display = user ? "none" : "block";
-      panel.style.display = user ? "block" : "none";
-
-      if (!user) {
-        message("Please log in with your Admin account.");
-        return;
-      }
-
-      message("Logged in. Loading website content...");
-
-      try {
-        const snap = await getDoc(contentRef);
-        fillForm(snap.exists() ? snap.data() : {});
-        message("Logged in. You can edit the content.");
-      } catch (error) {
-        console.error(error);
-        message("Load failed: " + error.message);
-      }
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("nav-open");
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
 
-    document.getElementById("loginForm").addEventListener(
-      "submit", async event => {
-        event.preventDefault();
-        const button = event.currentTarget.querySelector("button");
-        button.disabled = true;
-        button.textContent = "Logging in...";
-        message("Checking login details...");
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("nav-open");
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
 
-        try {
-          await signInWithEmailAndPassword(
-            auth,
-            document.getElementById("email").value.trim(),
-            document.getElementById("password").value
-          );
-          message("Login successful.");
-        } catch (error) {
-          console.error(error);
-          message("Login failed: " + error.message);
-        } finally {
-          button.disabled = false;
-          button.textContent = "Login →";
-        }
-      }
-    );
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll(".reveal");
 
-    document.getElementById("contentForm").addEventListener(
-      "submit", async event => {
-        event.preventDefault();
-
-        if (!auth.currentUser) {
-          message("Please log in first.");
-          return;
-        }
-
-        const data = {};
-
-        fields.forEach(id => {
-          data[id] = document.getElementById(id).value.trim();
-        });
-
-        // Store numeric-looking prices as numbers for easier formatting.
-        ["price1", "price2", "price3"].forEach(id => {
-          const raw = data[id].replace(/,/g, "").replace(/^Rs\.?\s*/i, "");
-          if (raw !== "" && /^\d+(\.\d+)?$/.test(raw)) {
-            data[id] = Number(raw);
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
           }
         });
+      }, { threshold: 0.12 });
 
-        const button = event.currentTarget.querySelector(
-          'button[type="submit"]'
-        );
-        button.disabled = true;
-        button.textContent = "Saving...";
-        message("Saving changes to Firebase...");
+      revealElements.forEach((element) => revealObserver.observe(element));
+    } else {
+      revealElements.forEach((element) => element.classList.add("visible"));
+    }
 
-        try {
-          await setDoc(contentRef, {
-            ...data,
-            updatedAt: new Date().toISOString()
-          }, { merge: true });
-
-          message("Saved successfully! Check the public website to confirm the changes.");
-        } catch (error) {
-          console.error(error);
-          message("Save failed: " + error.message);
-        } finally {
-          button.disabled = false;
-          button.textContent = "💾 Save Changes";
-        }
-      }
-    );
-
-    document.getElementById("logout").addEventListener(
-      "click", async () => {
-        try {
-          await signOut(auth);
-          message("Logged out.");
-        } catch (error) {
-          console.error(error);
-          message("Logout failed: " + error.message);
-        }
-      }
-    );
+    // Footer year
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
   </script>
 </body>
 </html>
