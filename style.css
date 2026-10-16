@@ -779,6 +779,80 @@ a {
 }
 
 /* ==========================================
+   FLOATING BITCOIN ANIMATION
+========================================== */
+
+.floating-bitcoins {
+  position: fixed;
+  right: 18px;
+  bottom: 24px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.floating-coin {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(
+    145deg,
+    #fff5ad 0%,
+    #ffdf32 35%,
+    #f5a900 70%,
+    #b87500 100%
+  );
+  border: 2px solid #ffe88a;
+  box-shadow:
+    0 0 12px #ffdf3280,
+    0 0 28px #ffb80035;
+  color: #111;
+  animation: bitcoinFloat 2.8s ease-in-out infinite;
+}
+
+.floating-coin span {
+  display: block;
+  font-size: 29px;
+  font-weight: 900;
+  animation: bitcoinSpin 4s ease-in-out infinite;
+}
+
+.floating-coin-two {
+  width: 40px;
+  height: 40px;
+  animation-delay: -1.4s;
+}
+
+.floating-coin-two span {
+  font-size: 25px;
+  animation-delay: -2s;
+}
+
+@keyframes bitcoinFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes bitcoinSpin {
+  0%, 100% {
+    transform: rotateY(0deg);
+  }
+
+  50% {
+    transform: rotateY(180deg);
+  }
+}
+
+/* ==========================================
    SCROLL REVEAL ANIMATION
 ========================================== */
 
@@ -911,6 +985,30 @@ a:focus-visible {
   .developer-credit {
     flex-direction: column;
     gap: 6px;
+  }
+
+  .floating-bitcoins {
+    right: 10px;
+    bottom: 14px;
+    gap: 7px;
+  }
+
+  .floating-coin {
+    width: 39px;
+    height: 39px;
+  }
+
+  .floating-coin span {
+    font-size: 24px;
+  }
+
+  .floating-coin-two {
+    width: 33px;
+    height: 33px;
+  }
+
+  .floating-coin-two span {
+    font-size: 21px;
   }
 }
 
