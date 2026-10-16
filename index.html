@@ -16,8 +16,13 @@
 
   <title>SL Crypto Academy | Crypto Trading Courses in Sri Lanka</title>
 
+  <!-- Website favicon / Google Search icon -->
+  <link rel="icon" type="image/png" href="/Sl-crypto-academy/favicon.png">
+  <link rel="shortcut icon" href="/Sl-crypto-academy/favicon.png">
+  <link rel="apple-touch-icon" href="/Sl-crypto-academy/favicon.png">
+
   <link rel="stylesheet" href="style.css">
-</head> <link rel="icon" type="image/png" href="favicon.png">
+</head>
 
 <body>
 
@@ -269,7 +274,6 @@
 
         const data = snapshot.data();
 
-        // Load prices saved in the Admin Panel.
         if (data.price1 != null && String(data.price1).trim() !== "") {
           document.getElementById("price1").textContent =
             String(data.price1).replace(/^rs\.?\s*/i, "");
