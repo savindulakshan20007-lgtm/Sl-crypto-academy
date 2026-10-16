@@ -1,18 +1,18 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta name="theme-color" content="#080b09">
-  <title>SL Crypto Academy | Admin Panel</title>
+  <title>Admin Panel | SL Crypto Academy</title>
+  <link rel="icon" href="./logo.png" type="image/png">
 
   <style>
     :root {
       --black: #080b09;
       --panel: #111713;
-      --white: #ffffff;
+      --white: #fff;
       --muted: #a5b1a8;
       --green: #00e676;
       --yellow: #ffdf32;
@@ -28,129 +28,128 @@
 
     body {
       min-height: 100vh;
-      padding: 24px 16px 45px;
+      padding: 30px 15px;
       color: var(--white);
       background:
-        radial-gradient(ellipse at top, rgba(0,230,118,.1), transparent 45%),
+        radial-gradient(ellipse at top left, rgba(0,230,118,.08), transparent 38%),
+        radial-gradient(ellipse at bottom right, rgba(255,32,32,.05), transparent 35%),
         var(--black);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
+      font-family: Arial, sans-serif;
     }
 
     button, input, textarea {
       font: inherit;
     }
 
-    .topbar {
-      max-width: 760px;
-      margin: 0 auto 22px;
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .top-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      z-index: 20;
+      background: linear-gradient(90deg, var(--green), var(--yellow), var(--red), var(--green));
+      background-size: 250% 100%;
+      animation: flow 5s linear infinite;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+    }
+
+    .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 15px;
+      gap: 16px;
+      margin-bottom: 25px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-    }
-
-    .brand-icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      border: 1px solid var(--red);
-      border-radius: 50%;
-      color: var(--green);
-      font-size: 17px;
+      font-size: 13px;
       font-weight: 900;
-      box-shadow: 0 0 14px rgba(255,32,32,.35);
-      animation: logoGlow 2.5s ease-in-out infinite alternate;
     }
 
-    .brand h1 {
-      color: var(--white);
-      font-size: clamp(17px, 4vw, 23px);
-      line-height: 1.3;
+    .brand img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 9px rgba(255,32,32,.4));
     }
 
-    .brand h1 span {
+    .brand strong {
       color: var(--green);
     }
 
-    .brand p {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .live-indicator {
+    .back-link {
       color: var(--green);
-      font-size: 10px;
+      font-size: 12px;
       font-weight: bold;
-      white-space: nowrap;
+      text-decoration: none;
     }
 
-    main {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: clamp(19px, 4vw, 34px);
-      background: rgba(17,23,19,.96);
-      border: 1px solid rgba(0,230,118,.23);
-      border-radius: 18px;
-      box-shadow: 0 15px 60px rgba(0,0,0,.3);
+    .back-link:hover {
+      color: var(--yellow);
+    }
+
+    .panel {
       position: relative;
+      padding: 32px;
       overflow: hidden;
+      background: rgba(17,23,19,.95);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
     }
 
-    main::before {
+    .panel::before {
       content: "";
       position: absolute;
       top: 0;
-      left: 12%;
-      right: 12%;
+      left: 0;
+      right: 0;
       height: 2px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        var(--green),
-        var(--yellow),
-        var(--red),
-        transparent
-      );
-      box-shadow: 0 0 15px rgba(0,230,118,.4);
+      background: linear-gradient(90deg, var(--green), var(--yellow), var(--red));
+    }
+
+    h1 {
+      margin-bottom: 9px;
+      font-size: clamp(25px, 5vw, 34px);
+      font-weight: 900;
+    }
+
+    h1 span {
+      color: var(--green);
     }
 
     .intro {
       margin-bottom: 25px;
-    }
-
-    .intro h2 {
-      font-size: 23px;
-      margin-bottom: 5px;
-    }
-
-    .intro p {
       color: var(--muted);
       font-size: 13px;
-    }
-
-    .section-title {
-      color: var(--green);
-      font-size: 15px;
-      margin-bottom: 18px;
+      line-height: 1.8;
     }
 
     .field {
-      margin-bottom: 18px;
+      margin-bottom: 19px;
     }
 
     label {
       display: block;
-      margin-bottom: 7px;
-      color: #e3ece5;
+      margin-bottom: 8px;
+      color: #e8eee9;
       font-size: 12px;
       font-weight: bold;
     }
@@ -160,8 +159,8 @@
       width: 100%;
       padding: 13px 14px;
       color: var(--white);
-      background: #080b09;
-      border: 1px solid #35453a;
+      background: #080d09;
+      border: 1px solid rgba(255,255,255,.12);
       border-radius: 8px;
       outline: none;
       transition: border-color .25s, box-shadow .25s;
@@ -172,182 +171,202 @@
       box-shadow: 0 0 0 3px rgba(0,230,118,.08);
     }
 
-    input::placeholder, textarea::placeholder {
-      color: #6f7d73;
-    }
-
     textarea {
-      min-height: 100px;
+      min-height: 105px;
       resize: vertical;
     }
 
-    .help {
-      display: block;
-      color: #89958c;
-      font-size: 10px;
-      margin-top: 6px;
+    input::placeholder, textarea::placeholder {
+      color: #748078;
     }
 
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 25px 0;
+    .section-label {
+      margin: 29px 0 17px;
+      padding-bottom: 10px;
+      color: var(--green);
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.4px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+      margin-top: 25px;
     }
 
     .btn {
-      width: 100%;
-      min-height: 47px;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 18px;
+      min-height: 45px;
+      padding: 12px 19px;
       border: 1px solid transparent;
       border-radius: 8px;
+      font-size: 12px;
+      font-weight: 900;
       cursor: pointer;
-      font-size: 13px;
-      font-weight: 800;
-      transition: transform .25s, box-shadow .25s, background .25s;
+      transition: transform .25s, box-shadow .25s, background .25s, color .25s;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
+    .btn:hover:not(:disabled) {
+      transform: translateY(-3px);
     }
 
     .btn:disabled {
       opacity: .6;
       cursor: wait;
-      transform: none;
     }
 
     .btn-primary {
-      color: #031108;
+      color: #041008;
       background: var(--green);
-      box-shadow: 0 0 15px rgba(0,230,118,.1);
     }
 
-    .btn-primary:hover {
-      background: #45ffa0;
-      box-shadow: 0 0 24px rgba(0,230,118,.25);
+    .btn-primary:hover:not(:disabled) {
+      background: var(--yellow);
+      box-shadow: 0 0 22px rgba(255,223,50,.2);
     }
 
-    .btn-secondary {
+    .btn-outline {
       color: var(--white);
-      background: #19221b;
-      border-color: #35453a;
+      background: transparent;
+      border-color: rgba(255,255,255,.2);
     }
 
-    .btn-secondary:hover {
-      border-color: var(--yellow);
-      box-shadow: 0 0 18px rgba(255,223,50,.1);
+    .btn-outline:hover:not(:disabled) {
+      color: var(--green);
+      border-color: var(--green);
     }
 
     .btn-danger {
-      margin-top: 12px;
       color: #fff;
-      background: rgba(255,32,32,.1);
-      border-color: rgba(255,32,32,.45);
+      background: #3a1111;
+      border-color: rgba(255,32,32,.4);
     }
 
-    .btn-danger:hover {
-      background: rgba(255,32,32,.2);
-      box-shadow: 0 0 18px rgba(255,32,32,.15);
+    .btn-danger:hover:not(:disabled) {
+      background: var(--red);
     }
 
-    #panel {
-      display: none;
-    }
-
-    #status {
-      margin-top: 20px;
+    .status {
+      margin-top: 18px;
       padding: 12px 14px;
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
       border: 1px solid var(--border);
       border-radius: 8px;
-      background: rgba(0,0,0,.2);
-      color: var(--muted);
       font-size: 12px;
+      line-height: 1.7;
       overflow-wrap: anywhere;
     }
 
-    #status.success {
+    .status.success {
       color: var(--green);
-      border-color: rgba(0,230,118,.3);
+      border-color: rgba(0,230,118,.25);
     }
 
-    #status.error {
-      color: #ff7373;
-      border-color: rgba(255,32,32,.35);
+    .status.error {
+      color: #ff7777;
+      border-color: rgba(255,32,32,.3);
     }
 
     .preview {
-      display: none;
+      display: block;
+      width: 100%;
+      max-height: 300px;
       margin-top: 12px;
-      padding: 10px;
+      object-fit: contain;
+      background: #080b09;
       border: 1px solid var(--border);
-      border-radius: 9px;
+      border-radius: 8px;
     }
 
-    .preview img {
-      max-width: 100%;
-      max-height: 220px;
-      margin: auto;
-      border-radius: 6px;
+    .preview-frame {
+      position: relative;
+      width: 100%;
+      margin-top: 12px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: #080b09;
+      border: 1px solid var(--border);
+      border-radius: 8px;
     }
 
-    .preview a {
-      color: var(--green);
-      overflow-wrap: anywhere;
-      font-size: 12px;
+    .preview-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
-    .note {
-      margin-top: 20px;
+    .help {
+      margin-top: 7px;
       color: var(--muted);
       font-size: 11px;
+      line-height: 1.7;
     }
 
     .footer {
-      max-width: 760px;
-      margin: 20px auto 0;
+      padding: 25px 0 5px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
       text-align: center;
-      color: #829087;
-      font-size: 10px;
     }
 
     .footer strong {
+      color: var(--white);
+    }
+
+    .footer a {
       color: var(--green);
+      text-decoration: none;
     }
 
-    @keyframes logoGlow {
-      from {
-        box-shadow: 0 0 8px rgba(255,32,32,.25);
-      }
-      to {
-        box-shadow: 0 0 22px rgba(255,32,32,.65);
-      }
+    @keyframes flow {
+      from { background-position: 0 0; }
+      to { background-position: 250% 0; }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 520px) {
       body {
-        padding: 15px 12px 30px;
+        padding: 22px 12px;
       }
 
-      .brand-icon {
-        width: 42px;
-        height: 42px;
+      .panel {
+        padding: 23px 17px;
       }
 
-      .live-indicator {
-        font-size: 9px;
+      .header {
+        align-items: flex-start;
       }
 
-      .intro h2 {
-        font-size: 20px;
+      .brand {
+        font-size: 11px;
+      }
+
+      .brand img {
+        width: 37px;
+        height: 37px;
+      }
+
+      .button-row {
+        flex-direction: column;
+      }
+
+      .button-row .btn {
+        width: 100%;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
       }
     }
@@ -355,177 +374,149 @@
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <div class="brand-icon">SL</div>
-      <div>
-        <h1>SL <span>Crypto Academy</span></h1>
-        <p>Website Administration</p>
-      </div>
-    </div>
-    <span class="live-indicator">● ADMIN PANEL</span>
-  </header>
+  <div class="top-line"></div>
 
-  <main>
-    <div class="intro">
-      <h2>Control Panel</h2>
-      <p>Manage your website content and package information.</p>
-    </div>
+  <main class="page">
+    <header class="header">
+      <a class="brand" href="./index.html">
+        <img src="./logo.png" alt="SL Crypto Academy logo">
+        <span>SL <strong>CRYPTO</strong> ACADEMY</span>
+      </a>
+      <a class="back-link" href="./index.html">← View Website</a>
+    </header>
 
-    <section id="login">
-      <h3 class="section-title">Admin Login</h3>
+    <section class="panel">
+      <h1>Website <span>Admin Panel</span></h1>
+      <p class="intro">
+        Log in with your authorized Firebase account to update your website content.
+        Changes are saved to Firestore.
+      </p>
 
       <form id="loginForm">
+        <div class="section-label">ADMIN LOGIN</div>
+
         <div class="field">
-          <label for="email">Admin Email</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="Enter admin email"
-            autocomplete="username"
-            required
-          >
+          <label for="email">Admin email</label>
+          <input id="email" type="email" autocomplete="username"
+            placeholder="Enter your admin email" required>
         </div>
 
         <div class="field">
           <label for="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            placeholder="Enter password"
-            autocomplete="current-password"
-            required
-          >
+          <input id="password" type="password" autocomplete="current-password"
+            placeholder="Enter your password" required>
         </div>
 
         <button class="btn btn-primary" id="loginButton" type="submit">
-          Login to Admin Panel
-        </button>
-      </form>
-    </section>
-
-    <section id="panel">
-      <div class="divider"></div>
-      <h3 class="section-title">Website Content</h3>
-
-      <form id="contentForm">
-        <div class="field">
-          <label for="title">Website Title</label>
-          <input id="title" placeholder="SL Crypto Academy">
-        </div>
-
-        <div class="field">
-          <label for="description">Website Description</label>
-          <textarea
-            id="description"
-            placeholder="Enter your website description"
-          ></textarea>
-        </div>
-
-        <div class="divider"></div>
-        <h3 class="section-title">Package Prices</h3>
-
-        <div class="field">
-          <label for="price1">Package 1 Price — Online Course</label>
-          <input
-            id="price1"
-            inputmode="decimal"
-            placeholder="10000"
-          >
-          <small class="help">Enter the amount only, for example 10000.</small>
-        </div>
-
-        <div class="field">
-          <label for="price2">Package 2 Price — Trading Books</label>
-          <input
-            id="price2"
-            inputmode="decimal"
-            placeholder="5000"
-          >
-          <small class="help">Enter the amount only, for example 5000.</small>
-        </div>
-
-        <div class="field">
-          <label for="price3">Package 3 Price (Optional)</label>
-          <input
-            id="price3"
-            inputmode="decimal"
-            placeholder="Optional"
-          >
-          <small class="help">
-            Your current homepage has two packages. This third price is saved
-            but will not appear until a third package is added to the homepage.
-          </small>
-        </div>
-
-        <div class="divider"></div>
-        <h3 class="section-title">Photo and Video</h3>
-
-        <div class="field">
-          <label for="photoUrl">Photo URL</label>
-          <input
-            id="photoUrl"
-            type="url"
-            placeholder="https://example.com/photo.jpg"
-          >
-          <small class="help">
-            Enter a publicly accessible image URL.
-          </small>
-          <div class="preview" id="photoPreview">
-            <img id="photoPreviewImage" alt="Website photo preview">
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="videoUrl">Video URL</label>
-          <input
-            id="videoUrl"
-            type="url"
-            placeholder="https://..."
-          >
-          <small class="help">
-            A video URL is saved here. Displaying it on the homepage also
-            requires homepage code.
-          </small>
-          <div class="preview" id="videoPreview">
-            <a id="videoPreviewLink" target="_blank" rel="noopener noreferrer">
-              Open video link
-            </a>
-          </div>
-        </div>
-
-        <button class="btn btn-primary" id="saveButton" type="submit">
-          Save Changes
+          LOGIN TO ADMIN
         </button>
       </form>
 
-      <button class="btn btn-danger" id="logout" type="button">
-        Logout
-      </button>
+      <div id="adminArea" hidden>
+        <div class="section-label">WEBSITE CONTENT</div>
 
-      <p class="note">
-        Changes are saved to Firebase Firestore. The public website must read
-        the relevant fields to display them to visitors.
-      </p>
+        <form id="contentForm">
+          <div class="field">
+            <label for="title">Website / Hero Title</label>
+            <input id="title" maxlength="120"
+              placeholder="Learn Crypto Trading. Build Your Knowledge.">
+          </div>
+
+          <div class="field">
+            <label for="description">Website Description</label>
+            <textarea id="description" maxlength="1500"
+              placeholder="Enter your website description"></textarea>
+          </div>
+
+          <div class="section-label">PACKAGE PRICES</div>
+
+          <div class="field">
+            <label for="price1">Package 1 — Online Course (Rs.)</label>
+            <input id="price1" type="number" min="0" step="1"
+              inputmode="numeric" placeholder="10000">
+          </div>
+
+          <div class="field">
+            <label for="price2">Package 2 — Trading Books (Rs.)</label>
+            <input id="price2" type="number" min="0" step="1"
+              inputmode="numeric" placeholder="5000">
+          </div>
+
+          <div class="field">
+            <label for="price3">Package 3 — Optional extra package price (Rs.)</label>
+            <input id="price3" type="number" min="0" step="1"
+              inputmode="numeric" placeholder="Leave empty to hide this package">
+            <p class="help">Leave empty if you don't want the third package displayed.</p>
+          </div>
+
+          <div class="field">
+            <label for="package3Title">Package 3 title</label>
+            <input id="package3Title" maxlength="100"
+              placeholder="Extra Package">
+          </div>
+
+          <div class="field">
+            <label for="package3Description">Package 3 description</label>
+            <textarea id="package3Description" maxlength="500"
+              placeholder="Describe the extra package"></textarea>
+          </div>
+
+          <div class="section-label">PHOTO & VIDEO</div>
+
+          <div class="field">
+            <label for="photoUrl">Photo URL</label>
+            <input id="photoUrl" type="url" placeholder="https://example.com/photo.jpg">
+            <p class="help">Enter a publicly accessible image URL beginning with https://.</p>
+            <img id="photoPreview" class="preview" alt="Photo preview" hidden>
+          </div>
+
+          <div class="field">
+            <label for="videoUrl">YouTube video URL</label>
+            <input id="videoUrl" type="url"
+              placeholder="https://www.youtube.com/watch?v=XXXXXXXXXXX">
+            <p class="help">Enter a normal YouTube video, Shorts or youtu.be link.</p>
+            <div id="videoPreviewContainer" class="preview-frame" hidden>
+              <iframe id="videoPreview" title="Video preview"
+                loading="lazy" allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button class="btn btn-primary" id="saveButton" type="submit">
+              SAVE CHANGES
+            </button>
+            <button class="btn btn-outline" id="reloadButton" type="button">
+              RELOAD SAVED DATA
+            </button>
+            <button class="btn btn-danger" id="logoutButton" type="button">
+              LOGOUT
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div id="status" class="status" role="status" aria-live="polite">
+        Checking Firebase configuration...
+      </div>
     </section>
 
-    <p id="status" role="status" aria-live="polite">
-      Connecting to Firebase...
-    </p>
+    <footer class="footer">
+      Website Designed &amp; Developed by<br>
+      <strong>Savindu Lakshan</strong><br>
+      <a href="https://wa.me/94754856808">075 485 68 08</a>
+    </footer>
   </main>
 
-  <footer class="footer">
-    Website Designed &amp; Developed by <strong>Savindu Lakshan</strong>
-  </footer>
-
   <script type="module">
-    import { initializeApp }
+    import { initializeApp, getApps }
       from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
     import {
       getAuth,
-      signInWithEmailAndPassword,
       onAuthStateChanged,
+      signInWithEmailAndPassword,
       signOut
     } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
@@ -533,201 +524,321 @@
       getFirestore,
       doc,
       getDoc,
-      setDoc
+      setDoc,
+      serverTimestamp
     } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
+    /*
+      IMPORTANT:
+      Copy your EXISTING working Firebase config into this object.
+      Do not leave placeholder API keys or app IDs.
+      Never put a service-account private key in website code.
+    */
     const firebaseConfig = {
-      apiKey: "AIzaSyA1wvXAjg8UAJH0KZU500BT1mXYpF8sZ3s",
+      apiKey: "YOUR_FIREBASE_API_KEY",
       authDomain: "sl-crypto-academy.firebaseapp.com",
       projectId: "sl-crypto-academy",
       storageBucket: "sl-crypto-academy.firebasestorage.app",
-      messagingSenderId: "923837308526",
-      appId: "1:923837308526:web:7c9b755aa034974edfd07f",
-      measurementId: "G-3WS2C5P3NX"
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_FIREBASE_APP_ID"
     };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-    const contentRef = doc(db, "siteContent", "main");
+    const $ = id => document.getElementById(id);
 
-    const loginSection = document.getElementById("login");
-    const panel = document.getElementById("panel");
-    const status = document.getElementById("status");
-    const loginButton = document.getElementById("loginButton");
-    const saveButton = document.getElementById("saveButton");
+    const loginForm = $("loginForm");
+    const contentForm = $("contentForm");
+    const adminArea = $("adminArea");
+    const statusBox = $("status");
+    const loginButton = $("loginButton");
+    const saveButton = $("saveButton");
 
-    const fields = [
-      "title",
-      "description",
-      "price1",
-      "price2",
-      "price3",
-      "photoUrl",
-      "videoUrl"
-    ];
+    let auth;
+    let db;
+    let configurationReady = false;
+    let loadingData = false;
 
-    function message(text, type = "") {
-      status.textContent = text;
-      status.className = type;
+    function setStatus(message, type = "") {
+      statusBox.textContent = message;
+      statusBox.className = "status" + (type ? " " + type : "");
     }
 
-    function fillForm(data = {}) {
-      fields.forEach(id => {
-        const value = data[id];
-        document.getElementById(id).value =
-          value === undefined || value === null ? "" : String(value);
-      });
-
-      updatePreviews();
+    function validConfiguration(config) {
+      return Boolean(
+        config.apiKey &&
+        !config.apiKey.startsWith("YOUR_") &&
+        config.authDomain &&
+        config.projectId &&
+        config.appId &&
+        !config.appId.startsWith("YOUR_") &&
+        config.messagingSenderId &&
+        !config.messagingSenderId.startsWith("YOUR_")
+      );
     }
 
-    function getFormData() {
-      const data = {};
+    if (!validConfiguration(firebaseConfig)) {
+      setStatus(
+        "Firebase configuration is incomplete. Copy the existing working Firebase config into this file first.",
+        "error"
+      );
+    } else {
+      try {
+        const app = getApps().length
+          ? getApps()[0]
+          : initializeApp(firebaseConfig);
 
-      fields.forEach(id => {
-        data[id] = document.getElementById(id).value.trim();
-      });
+        auth = getAuth(app);
+        db = getFirestore(app);
+        configurationReady = true;
 
-      return data;
-    }
-
-    function updatePreviews() {
-      const photoUrl = document.getElementById("photoUrl").value.trim();
-      const videoUrl = document.getElementById("videoUrl").value.trim();
-
-      const photoPreview = document.getElementById("photoPreview");
-      const photoImage = document.getElementById("photoPreviewImage");
-
-      if (photoUrl) {
-        photoImage.src = photoUrl;
-        photoPreview.style.display = "block";
-      } else {
-        photoImage.removeAttribute("src");
-        photoPreview.style.display = "none";
-      }
-
-      const videoPreview = document.getElementById("videoPreview");
-      const videoLink = document.getElementById("videoPreviewLink");
-
-      if (videoUrl) {
-        videoLink.href = videoUrl;
-        videoPreview.style.display = "block";
-      } else {
-        videoLink.removeAttribute("href");
-        videoPreview.style.display = "none";
+        onAuthStateChanged(auth, async user => {
+          if (user) {
+            loginForm.hidden = true;
+            adminArea.hidden = false;
+            setStatus("Logged in. Loading saved website content...", "");
+            await loadContent();
+          } else {
+            loginForm.hidden = false;
+            adminArea.hidden = true;
+            setStatus("Please log in with your authorized admin account.");
+          }
+        });
+      } catch (error) {
+        console.error(error);
+        setStatus("Firebase could not initialize. Check your configuration.", "error");
       }
     }
 
-    document.getElementById("photoUrl").addEventListener(
-      "input", updatePreviews
-    );
+    loginForm.addEventListener("submit", async event => {
+      event.preventDefault();
 
-    document.getElementById("videoUrl").addEventListener(
-      "input", updatePreviews
-    );
-
-    onAuthStateChanged(auth, async user => {
-      loginSection.style.display = user ? "none" : "block";
-      panel.style.display = user ? "block" : "none";
-
-      if (!user) {
-        message("Please log in with your Admin account.");
+      if (!configurationReady) {
+        setStatus("Please complete the Firebase configuration first.", "error");
         return;
       }
 
-      message("Logged in. Loading website content...");
+      loginButton.disabled = true;
+      loginButton.textContent = "LOGGING IN...";
 
       try {
-        const snapshot = await getDoc(contentRef);
-        fillForm(snapshot.exists() ? snapshot.data() : {});
-        message("Logged in successfully. You can edit the content.", "success");
+        await signInWithEmailAndPassword(
+          auth,
+          $("email").value.trim(),
+          $("password").value
+        );
+        $("password").value = "";
+        setStatus("Login successful.", "success");
       } catch (error) {
         console.error(error);
-        message(
-          "Could not load content. Check your Firestore rules and internet connection. " +
-          error.message,
-          "error"
-        );
+        setStatus("Login failed. Check your email, password and Firebase Authentication settings.", "error");
+      } finally {
+        loginButton.disabled = false;
+        loginButton.textContent = "LOGIN TO ADMIN";
       }
     });
 
-    document.getElementById("loginForm").addEventListener(
-      "submit", async event => {
-        event.preventDefault();
+    async function loadContent() {
+      if (!configurationReady || !auth.currentUser) return;
 
-        loginButton.disabled = true;
-        loginButton.textContent = "Logging in...";
-        message("Checking admin login...");
+      try {
+        const snapshot = await getDoc(doc(db, "siteContent", "main"));
 
-        try {
-          await signInWithEmailAndPassword(
-            auth,
-            document.getElementById("email").value.trim(),
-            document.getElementById("password").value
-          );
+        if (snapshot.exists()) {
+          const data = snapshot.data();
 
-          message("Login successful.", "success");
-        } catch (error) {
-          console.error(error);
-          message("Login failed: " + error.message, "error");
-        } finally {
-          loginButton.disabled = false;
-          loginButton.textContent = "Login to Admin Panel";
+          $("title").value = data.title ?? "";
+          $("description").value = data.description ?? "";
+          $("price1").value = data.price1 ?? "10000";
+          $("price2").value = data.price2 ?? "5000";
+          $("price3").value = data.price3 ?? "";
+          $("package3Title").value = data.package3Title ?? "";
+          $("package3Description").value = data.package3Description ?? "";
+          $("photoUrl").value = data.photoUrl ?? "";
+          $("videoUrl").value = data.videoUrl ?? "";
+
+          updatePhotoPreview();
+          updateVideoPreview();
+
+          setStatus("Logged in. Saved website content loaded.", "success");
+        } else {
+          $("title").value = "Learn Crypto Trading. Build Your Knowledge.";
+          $("description").value =
+            "Improve your crypto trading knowledge with learning resources, chart patterns, technical analysis and trading books.";
+          $("price1").value = "10000";
+          $("price2").value = "5000";
+          $("price3").value = "";
+          $("package3Title").value = "";
+          $("package3Description").value = "";
+          $("photoUrl").value = "";
+          $("videoUrl").value = "";
+
+          updatePhotoPreview();
+          updateVideoPreview();
+
+          setStatus("No saved content found yet. Default values are ready to edit.", "success");
         }
+      } catch (error) {
+        console.error(error);
+        setStatus("Could not load content. Check your Firestore rules and internet connection.", "error");
       }
-    );
+    }
 
-    document.getElementById("contentForm").addEventListener(
-      "submit", async event => {
-        event.preventDefault();
+    contentForm.addEventListener("submit", async event => {
+      event.preventDefault();
 
-        if (!auth.currentUser) {
-          message("Please log in first.", "error");
-          return;
-        }
-
-        const data = getFormData();
-
-        // Keep package prices as strings so values like "10000" are preserved.
-        saveButton.disabled = true;
-        saveButton.textContent = "Saving...";
-        message("Saving changes to Firebase...");
-
-        try {
-          await setDoc(contentRef, {
-            ...data,
-            updatedAt: new Date().toISOString()
-          }, { merge: true });
-
-          message("Saved successfully! Your changes are stored in Firebase.", "success");
-        } catch (error) {
-          console.error(error);
-          message(
-            "Save failed: " + error.message +
-            " Check your Firestore security rules.",
-            "error"
-          );
-        } finally {
-          saveButton.disabled = false;
-          saveButton.textContent = "Save Changes";
-        }
+      if (!configurationReady || !auth.currentUser) {
+        setStatus("Please log in again before saving.", "error");
+        return;
       }
-    );
 
-    document.getElementById("logout").addEventListener(
-      "click", async () => {
-        try {
-          await signOut(auth);
-          fillForm({});
-          message("Logged out successfully.", "success");
-        } catch (error) {
-          console.error(error);
-          message("Logout failed: " + error.message, "error");
-        }
+      if (loadingData) return;
+
+      const price1 = $("price1").value.trim();
+      const price2 = $("price2").value.trim();
+      const price3 = $("price3").value.trim();
+      const photoUrl = $("photoUrl").value.trim();
+      const videoUrl = $("videoUrl").value.trim();
+
+      if (price1 && (!Number.isFinite(Number(price1)) || Number(price1) < 0)) {
+        setStatus("Package 1 price must be a valid non-negative number.", "error");
+        return;
       }
-    );
+
+      if (price2 && (!Number.isFinite(Number(price2)) || Number(price2) < 0)) {
+        setStatus("Package 2 price must be a valid non-negative number.", "error");
+        return;
+      }
+
+      if (price3 && (!Number.isFinite(Number(price3)) || Number(price3) < 0)) {
+        setStatus("Package 3 price must be a valid non-negative number.", "error");
+        return;
+      }
+
+      if (photoUrl && !isHttpUrl(photoUrl)) {
+        setStatus("Please enter a valid photo URL beginning with http:// or https://.", "error");
+        return;
+      }
+
+      if (videoUrl && !getYouTubeEmbedUrl(videoUrl)) {
+        setStatus("Please enter a valid YouTube video link.", "error");
+        return;
+      }
+
+      const data = {
+        title: $("title").value.trim(),
+        description: $("description").value.trim(),
+        price1: price1 === "" ? "" : Number(price1),
+        price2: price2 === "" ? "" : Number(price2),
+        price3: price3 === "" ? "" : Number(price3),
+        package3Title: $("package3Title").value.trim(),
+        package3Description: $("package3Description").value.trim(),
+        photoUrl,
+        videoUrl,
+        updatedAt: serverTimestamp()
+      };
+
+      saveButton.disabled = true;
+      saveButton.textContent = "SAVING...";
+
+      try {
+        await setDoc(doc(db, "siteContent", "main"), data, { merge: true });
+        setStatus("Saved successfully! Open the public website to check the changes.", "success");
+      } catch (error) {
+        console.error(error);
+        setStatus("Save failed. Check your Firestore security rules and admin permissions.", "error");
+      } finally {
+        saveButton.disabled = false;
+        saveButton.textContent = "SAVE CHANGES";
+      }
+    });
+
+    $("reloadButton").addEventListener("click", loadContent);
+
+    $("logoutButton").addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+        setStatus("Logged out successfully.", "success");
+      } catch (error) {
+        console.error(error);
+        setStatus("Logout failed. Please try again.", "error");
+      }
+    });
+
+    $("photoUrl").addEventListener("input", updatePhotoPreview);
+    $("videoUrl").addEventListener("input", updateVideoPreview);
+
+    function isHttpUrl(value) {
+      try {
+        const url = new URL(value);
+        return url.protocol === "https:" || url.protocol === "http:";
+      } catch {
+        return false;
+      }
+    }
+
+    function updatePhotoPreview() {
+      const value = $("photoUrl").value.trim();
+      const preview = $("photoPreview");
+
+      preview.hidden = true;
+      preview.removeAttribute("src");
+
+      if (!value || !isHttpUrl(value)) return;
+
+      preview.onload = () => {
+        preview.hidden = false;
+      };
+
+      preview.onerror = () => {
+        preview.hidden = true;
+        setStatus("Photo preview failed. Check whether the image URL is publicly accessible.", "error");
+      };
+
+      preview.src = value;
+    }
+
+    function getYouTubeEmbedUrl(value) {
+      try {
+        const url = new URL(value);
+        let id = "";
+
+        if (url.hostname === "youtu.be" || url.hostname.endsWith(".youtu.be")) {
+          id = url.pathname.slice(1).split("/")[0];
+        } else if (
+          url.hostname === "youtube.com" ||
+          url.hostname.endsWith(".youtube.com")
+        ) {
+          if (url.pathname === "/watch") {
+            id = url.searchParams.get("v") || "";
+          } else if (
+            url.pathname.startsWith("/embed/") ||
+            url.pathname.startsWith("/shorts/")
+          ) {
+            id = url.pathname.split("/")[2] || "";
+          }
+        }
+
+        return /^[a-zA-Z0-9_-]{11}$/.test(id)
+          ? "https://www.youtube-nocookie.com/embed/" + id
+          : "";
+      } catch {
+        return "";
+      }
+    }
+
+    function updateVideoPreview() {
+      const url = getYouTubeEmbedUrl($("videoUrl").value.trim());
+      const container = $("videoPreviewContainer");
+      const iframe = $("videoPreview");
+
+      if (!url) {
+        container.hidden = true;
+        iframe.removeAttribute("src");
+        return;
+      }
+
+      iframe.src = url;
+      container.hidden = false;
+    }
   </script>
 </body>
 </html>
-```
