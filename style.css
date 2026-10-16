@@ -143,3 +143,11 @@ a.btn:focus-visible,a.nav-cta:focus-visible,a.package-button:focus-visible,butto
   color:#00e676!important;
   -webkit-text-fill-color:#00e676!important;
 }
+
+
+/* USER UPDATE: slower neon travel; keep the floating bottom WhatsApp shortcut hidden */
+.neon-border::after{animation:orbitBorder 4.8s linear infinite!important}
+.nav-cta,.btn,.admin-card,.admin-panel,.login-card,.admin-form input,.admin-form textarea,.login-form input{animation:orbitBorder 4.8s linear infinite!important}
+.package-button.btn-primary,.package-button.btn-outline{animation:orbitBorder 4.2s linear infinite,buyBorderGlow 3.8s ease-in-out infinite alternate!important}
+.whatsapp-float{display:none!important}
+@media(prefers-reduced-motion:reduce){.neon-border::after,.nav-cta,.btn,.admin-card,.admin-panel,.login-card,.admin-form input,.admin-form textarea,.login-form input,.package-button.btn-primary,.package-button.btn-outline{animation:none!important}}
